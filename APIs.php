@@ -8,7 +8,7 @@ class HackerNews {
     private $ch;
 
     public function __construct() {
-		$this->ch = curl_init();
+		    $this->ch = curl_init();
         curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($this->ch, CURLOPT_HTTPHEADER, array('Accept: application/json'));
@@ -46,14 +46,17 @@ class HackerNews {
 
           $str = '<div style="margin-bottom:30px;">';
           $str .= '<h4><a class="hackernews_link" href="'.$result_item['url'].'" target="_blank">'.$result_item['title'].'</a></h4>';
-          $str .= '<span class="hackernews_points" style="margin-right:10px;"><b>'.$result_item['points'].'</b> Points </span>';
-          $str .= '<span class="hackernews_comments"><b>'.$result_item['num_comments'].'</b> Comments </span>';
+          $str .= '<span class="hackernews_points" style="margin-right:10px;"><b>'.$result_item['points'].' points </b></span>';
+          $str .= '<a style="color:gray;" href="#" class="hackernews_comments">'.$result_item['num_comments'].' comments </a>';
           $str .= '</div>';
 
           echo $str;
         }
     }
 }
+
+
+
 
 
 

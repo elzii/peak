@@ -2,8 +2,9 @@
   require_once 'Scrapers.php'; 
   require_once 'APIs.php';
 
-  $scraper_github = new Github();
-  $api_hackernews = new HackerNews();
+  $scraper_github       = new Github();
+  $scraper_designernews = new DesignerNews();
+  $api_hackernews       = new HackerNews();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,27 +90,44 @@
 
       <div class="row">
 
-        <div id="github" class="span6">
-          <h2 class="hr">Github Trending Repos</h2>
-          <?php echo $scraper_github->scrapeTrendingRepos(''); ?>
-        </div>
 
-        <div class="span6">
-          <h2 class="hr">HackerNews Top Daily</h2>
+        <div id="hacker_news" class="span6">
+          <h2 class="hr">HackerNews</h2>
           
-          
-          <div id="hn-data">  
           <?php 
             // write new JSON results to hackernews.json
             //$api_hackernews->writeJSON();
             $items =  $api_hackernews->getJSON();
                       $api_hackernews->getPosts( $items );
-            
           ?>
-          </div>
 
-       </div>
+        </div>
+        <div id="designer_news" class="span6">
+          <h2 class="hr">DesignerNews</h2>
+
+          <?php 
+              $stories =  $scraper_designernews->scrapeStories();
+                          $scraper_designernews->displayStories($stories, 5);
+          ?>
+
+        </div>
       </div>
+
+
+      <div class="row">
+        
+        <div id="github" class="span6">
+          <h2 class="hr">Github Trending Repos</h2>
+          <?php echo $scraper_github->scrapeTrendingRepos(''); ?>
+        </div>
+
+        <div id="r_webdev" class="span6">
+          <h2 class="hr">/r/webdev</h2>
+        </div>
+
+      </div>
+
+
 
       <hr>
 
