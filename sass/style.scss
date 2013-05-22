@@ -1,0 +1,168 @@
+/* style.scss */
+
+@import "normalize";
+@import "compass/css3";
+
+* { 
+	//-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; 
+	margin:0;padding:0;
+}
+
+
+/* SASS VARIABLES	
+================================================== */
+
+	
+	/* INHERITANCE */
+
+
+/* BODY / DEFAULTS
+================================================== */
+body {
+	margin:0px;padding:0px;
+}
+h2.hr {
+	border-bottom:1px solid #cacaca;
+	padding-bottom:15px;
+	margin-bottom:15px;
+}
+	
+/* COLOR CLASSES
+================================================== */
+
+
+
+/* Github
+================================================== */	
+#github {
+	ul {
+		margin:0;padding:0;
+		list-style-type:none;
+
+		li {}
+
+		> li {
+			clear:both;
+			margin:0 0 25px 0;
+		}
+
+		ul.repo-stats {
+			width:12%;float:right;
+
+			li {
+				height:25px;width:100%;
+				display:block;
+				//@include box-shadow(0 0 1px 1px rgba(black,.1));
+				@include border-radius(3px);
+				background:#f9f9f9;
+				border:1px solid #f1f1f1;
+				text-align:center;
+				line-height:25px;
+				margin:0 0 7px 0;
+
+				a {
+					display:block;
+					color:#2a2a2a;
+					font-size:13px;
+					width:100%;
+			
+					span {font-size:13px;}
+				}
+
+				&:hover {
+					background:#f5f5f5;
+					a {text-decoration:none;}
+				}
+			}
+			
+		}
+
+		h3 {
+			font-size:20px;
+			line-height:1;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
