@@ -5,6 +5,7 @@
   $scraper_github       = new Github();
   $scraper_designernews = new DesignerNews();
   $api_hackernews       = new HackerNews();
+  $api_redditdev        = new RedditDev();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,18 +93,16 @@
 
 
         <div id="hacker_news" class="span6">
-          <h2 class="hr">HackerNews</h2>
+          <img class="icn-header" src="img/icon-hackernews.png" alt="Hacker News"><h2 class="hr">HackerNews</h2>
           
           <?php 
-            // write new JSON results to hackernews.json
-            //$api_hackernews->writeJSON();
             $items =  $api_hackernews->getJSON();
                       $api_hackernews->getPosts( $items );
           ?>
 
         </div>
         <div id="designer_news" class="span6">
-          <h2 class="hr">DesignerNews</h2>
+          <img class="icn-header" src="img/icon-designernews.png" alt="Designer News"><h2 class="hr">DesignerNews</h2>
 
           <?php 
               $stories =  $scraper_designernews->scrapeStories();
@@ -117,12 +116,18 @@
       <div class="row">
         
         <div id="github" class="span6">
-          <h2 class="hr">Github Trending Repos</h2>
+          <img class="icn-header" src="img/icon-github.png" alt="Github"><h2 class="hr">Github Trending Repos</h2>
           <?php echo $scraper_github->scrapeTrendingRepos(''); ?>
         </div>
 
         <div id="r_webdev" class="span6">
-          <h2 class="hr">/r/webdev</h2>
+          <img class="icn-header" src="img/icon-reddit.png" alt="Subreddit"><h2 class="hr">/r/webdev</h2>
+
+          <?php 
+            $items =  $api_redditdev->getJSON(5);
+                      $api_redditdev->getPosts( $items );
+          ?>
+
         </div>
 
       </div>

@@ -64,20 +64,7 @@ class DesignerNews {
 				  	  curl_close($this->ch);
 
 		// Check if it even exists
-		if(empty($output)) exit('Couldn\'t download the page');
-
-		// Find explore <ol>
-		// $pattern = '/<ol>(.*)<\/ol>/isU';
-
-		// preg_match_all($pattern, $output, $matches);
-
-		// if (preg_match_all($pattern, $output, $matches)) {
-		// 	$match_str = '<ul>'.($matches[1][0]).'</ul>';
-		// 	return $match_str;
-		// } else {
-		// 	return 'No matches';
-		// }
-		
+		if(empty($output)) exit('Couldn\'t download the page');		
 
 		$dom = new DOMDocument();
 		$dom->loadHTML($output);

@@ -389,6 +389,21 @@ h2.hr {
 
 /* COLOR CLASSES
 ================================================== */
+/* TYPOGRAPHY
+================================================== */
+h1.hr {
+  height: 40px;
+  line-height: 40px;
+}
+
+img.icn-header {
+  float: left;
+  height: 40px;
+  margin: 10px 15px 10px 0;
+  border: 1px solid #8a8a8a;
+  line-height: 40px;
+}
+
 /* Github
 ================================================== */
 #github ul {
@@ -399,6 +414,8 @@ h2.hr {
 #github ul > li {
   clear: both;
   margin: 0 0 25px 0;
+  float: left;
+  width: 100%;
 }
 #github ul ul.repo-stats {
   width: 12%;
