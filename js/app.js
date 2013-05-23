@@ -1,27 +1,27 @@
 (function($){
 
-    window.SCRAPER = {};
+    window.PEAK = {};
 
-    var SS = window.SCRAPER;
+    var PK = window.PEAK;
 
-    SS.init = function(){
-        SS.setElements();
-        SS.basics();
-        SS.scroll();
-        SS.modals();
-        SS.toggles();
-        SS.hackerNews('http://api.ihackernews.com/page?format=jsonp&callback=hnJSON');
+    PK.init = function(){
+        PK.setElements();
+        PK.basics();
+        PK.scroll();
+        PK.modals();
+        PK.toggles();
+        PK.github();
     }
-    SS.setElements = function(){
-        SS.elems = {};
+    PK.setElements = function(){
+        PK.elems = {};
         
     }
     
-    SS.basics = function(){
+    PK.basics = function(){
 
     }
 
-    SS.scroll = function(){
+    PK.scroll = function(){
         $('a[href^="#"]').click(function(e){
             var $self = $(this);
             var destination = $($self.attr('href'));
@@ -35,7 +35,7 @@
         });
     }
     
-    SS.modals = function(){
+    PK.modals = function(){
 
         $('a[href^="#"].modal-link').bind('click',function(e){
             var $self = $(this);
@@ -49,21 +49,21 @@
 
     }
 
-    SS.menus = function(){
+    PK.menus = function(){
 
         
     }
 
-    SS.toggles = function(){
+    PK.toggles = function(){
 
         
     }
 
-    SS.hackerNews = function(url){
-
-        // http://api.thriftdb.com/api.hnsearch.com/items/_search?pretty_print=true&filter[fields][create_ts]=[NOW-5HOURS TO NOW]&filter[queries][]=points:[10+TO+*]&limit=5&start=0
+    PK.github = function(){
+        //Github fixes
 
     }
+
 
     /* WINDOW & DOCUMENT LOAD/READYs
     ================================================== */
@@ -81,7 +81,7 @@
 
     $(document).ready(function(){
         
-        SS.init();
+        PK.init();
 
     });//close document ready
 

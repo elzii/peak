@@ -11,7 +11,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Scraper</title>
+    <title>Peak</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -55,7 +55,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Scraper</a>
+          <a class="brand" href="#">Peak</a>
           <!-- <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
@@ -117,7 +117,10 @@
         
         <div id="github" class="span6">
           <img class="icn-header" src="img/icon-github.png" alt="Github"><h2 class="hr">Github Trending Repos</h2>
-          <?php echo $scraper_github->scrapeTrendingRepos(''); ?>
+          <?php 
+              $repos   =  $scraper_github->scrapeTrendingRepos('today');
+                          $scraper_github->displayTrendingRepos($repos);
+          ?>
         </div>
 
         <div id="r_webdev" class="span6">
@@ -137,7 +140,7 @@
       <hr>
 
       <footer>
-        <p>&copy; Scraper 2013</p>
+        <p>&copy; Alexander Zizzo 2013</p>
       </footer>
 
     </div> <!-- /container -->

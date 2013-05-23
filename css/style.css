@@ -404,6 +404,13 @@ img.icn-header {
   line-height: 40px;
 }
 
+#hacker_news h4 a, #designer_news h4 a, #github h4 a, #r_webdev h4 a {
+  font-size: inherit;
+}
+#hacker_news a, #hacker_news span, #designer_news a, #designer_news span, #github a, #github span, #r_webdev a, #r_webdev span {
+  font-size: 12px;
+}
+
 /* Github
 ================================================== */
 #github ul {
@@ -454,4 +461,7 @@ img.icn-header {
 #github ul h3 {
   font-size: 20px;
   line-height: 1;
+}
+#github p {
+  margin-bottom: 5px;
 }

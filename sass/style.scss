@@ -46,6 +46,13 @@ img.icn-header {
 	line-height:40px;
 }
 
+
+#hacker_news,#designer_news,#github,#r_webdev {
+	h4 a {font-size:inherit;}
+	a,span {font-size:12px;}
+}
+
+
 /* Github
 ================================================== */	
 #github {
@@ -98,6 +105,10 @@ img.icn-header {
 			font-size:20px;
 			line-height:1;
 		}
+	}
+
+	p {
+		margin-bottom:5px;
 	}
 }
 
