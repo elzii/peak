@@ -37,7 +37,7 @@ class HackerNews {
     }
 
     public function getPosts( $items ){
-    	$itemsArr   = [];
+    	  $itemsArr   = array();
         $itemsArr   = json_decode($items, true);
         $results    = $itemsArr['results'];
 
