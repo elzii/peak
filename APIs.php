@@ -93,7 +93,7 @@ class RedditDev {
     }
 
     public function getPosts( $items ){
-      $itemsArr   = [];
+        $itemsArr         = array();
         $itemsArr         = json_decode($items, true);
         $results          = $itemsArr['data'];
         $results_children = $results['children'];
