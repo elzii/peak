@@ -60,7 +60,7 @@ class Github {
 		for($i = 0; $i < 5; $i++) {
 			$str = '<div style="margin-bottom:30px;">';
 			$str .= '<h4>';
-			  $str .= '<a class="github_author" href="http://github.com'.$reposArr[$i][5].'" target="_blank">'.$reposArr[$i][4].'</a>';
+			  $str .= '<a class="github_author" href="http://github.com'.$reposArr[$i][5].'" target="_blank">'.$reposArr[$i][4].'</a> / ';
         $str .= '<a class="github_repo" href="http://github.com'.$reposArr[$i][7].'" target="_blank">'.$reposArr[$i][6].'</a>';
       $str .= '</h4>';
 			$str .= '<p class="github_description">'.$reposArr[$i][8].'</p>';
