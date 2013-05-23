@@ -1,0 +1,21 @@
+web1: #component type & number
+  name: shiela
+  php_extensions:
+    - curl
+    - dom
+    - eaccelerator
+    - gd
+    - hash
+    - iconv
+    - mcrypt
+    - memcache
+    - mysql
+    - mysqli
+    - openssl
+    - simplexml
+    - soap
+    - wddx
+    - xml
+    - xmlreader
+    - xmlrpc
+    - xmlwriter
