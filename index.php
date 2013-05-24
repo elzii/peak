@@ -6,6 +6,8 @@
   $scraper_designernews = new DesignerNews();
   $api_hackernews       = new HackerNews();
   $api_redditdev        = new RedditDev();
+  $api_dribbble         = new Dribbble();
+  $api_stackoverflow    = new StackOverflow();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,56 +91,79 @@
         <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
       </div> -->
 
+
+      <!-- ROW 1
+      =================================================== -->
       <div class="row">
-
-
-        <div id="hacker_news" class="span6">
+        <div id="hacker_news" class="feed span4">
           <img class="icn-header" src="img/icon-hackernews.png" alt="Hacker News"><h2 class="hr">HackerNews</h2>
-          
           <?php 
             $items =  $api_hackernews->getJSON();
                       $api_hackernews->getPosts( $items );
           ?>
-
         </div>
-        <div id="designer_news" class="span6">
+        <div id="designer_news" class="feed span4">
           <img class="icn-header" src="img/icon-designernews.png" alt="Designer News"><h2 class="hr">DesignerNews</h2>
-
           <?php 
               $stories =  $scraper_designernews->scrapeStories();
                           $scraper_designernews->displayStories($stories, 5);
           ?>
-
         </div>
-      </div>
-
-
-      <div class="row">
-        
-        <div id="github" class="span6">
-          <img class="icn-header" src="img/icon-github.png" alt="Github"><h2 class="hr">Github Trending Repos</h2>
+        <div id="github" class="feed span4">
+          <img class="icn-header" src="img/icon-github.png" alt="Github"><h2 class="hr">Github Repos</h2>
           <?php 
               $repos   =  $scraper_github->scrapeTrendingRepos('today');
                           $scraper_github->displayTrendingRepos($repos);
           ?>
         </div>
+      </div>
 
-        <div id="r_webdev" class="span6">
+
+      <!-- ROW 2
+      =================================================== -->
+      <div class="row">
+        
+        <div id="dribbble" class="feed span4">
+          <img class="icn-header" src="img/icon-dribbble.png" alt="Dribbble"><h2 class="hr">Dribbble Shots</h2>
+          
+          <div class="dribbble_shots">
+            <?php 
+              $shots =  $api_dribbble->getJSON(6);
+                        $api_dribbble->getShots( $shots );
+            ?>
+          </div>
+        </div>
+        <div id="stackoverflow" class="feed span4">
+          <img class="icn-header" src="img/icon-stackoverflow.png" alt="Stack Overflow"><h2 class="hr">Stack Overflow</h2>
+            <?php 
+              $questions =  $api_stackoverflow->getJSON(5);
+                            $api_stackoverflow->getQuestions( $questions );
+            ?>
+        </div>
+        <div id="r_webdev" class="feed span4">
           <img class="icn-header" src="img/icon-reddit.png" alt="Subreddit"><h2 class="hr">/r/webdev</h2>
 
           <?php 
             $items =  $api_redditdev->getJSON(5);
                       $api_redditdev->getPosts( $items );
           ?>
-
         </div>
-
       </div>
 
 
 
-      <hr>
 
+      <!-- ROW 3
+      =================================================== -->
+      <div class="row">
+      </div>
+
+
+
+
+
+
+      <hr>
       <footer>
         <p>&copy; Alexander Zizzo 2013</p>
       </footer>

@@ -404,10 +404,10 @@ img.icn-header {
   line-height: 40px;
 }
 
-#hacker_news h4 a, #designer_news h4 a, #github h4 a, #r_webdev h4 a {
+.feed h4 a {
   font-size: inherit;
 }
-#hacker_news a, #hacker_news span, #designer_news a, #designer_news span, #github a, #github span, #r_webdev a, #r_webdev span {
+.feed a, .feed span, .feed p {
   font-size: 12px;
 }
 
@@ -464,4 +464,42 @@ img.icn-header {
 }
 #github p {
   margin-bottom: 5px;
+}
+
+/* Dribbble
+================================================== */
+#dribbble {
+  clear: both;
+}
+#dribbble:after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  clear: both;
+}
+#dribbble .dribbble_shot {
+  float: left;
+  width: 47%;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+#dribbble .dribbble_shot:nth-child(2n) {
+  margin-right: 0px;
+}
+#dribbble img.dribbble_shot_thumb {
+  display: block;
+  width: 100%;
+}
+
+/* Stack Overflow
+================================================== */
+#stackoverflow .stackoverflow_answered .answered {
+  color: #46a546;
+}
+#stackoverflow .stackoverflow_answered .unanswered {
+  color: #9d261d;
+}
+#stackoverflow .stackoverflow_tags {
+  color: #6baec2;
 }

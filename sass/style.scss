@@ -47,9 +47,9 @@ img.icn-header {
 }
 
 
-#hacker_news,#designer_news,#github,#r_webdev {
+.feed {
 	h4 a {font-size:inherit;}
-	a,span {font-size:12px;}
+	a,span,p {font-size:12px;}
 }
 
 
@@ -113,11 +113,42 @@ img.icn-header {
 }
 
 
+/* Dribbble
+================================================== */
+#dribbble {
+	clear:both;
+	&:after {position:absolute;content:'';width:0;height:0;clear:both;}
+	
+	.dribbble_shot {
+		float:left;
+		width:47%;
+		margin-right:15px;
+		margin-bottom:15px;
+
+		&:nth-child(2n) {margin-right:0px;}
+	}
+	img.dribbble_shot_thumb {
+		display:block;
+		width:100%;
+	}
+}
 
 
 
+/* Stack Overflow
+================================================== */
+#stackoverflow {
 
+	.stackoverflow_answered {
 
+		.answered   {color:#46a546;}
+		.unanswered {color:#9d261d;}
+	}
+
+	.stackoverflow_tags {
+		color:#6baec2;
+	}
+}
 
 
 
