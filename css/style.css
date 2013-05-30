@@ -439,6 +439,10 @@ html {
   padding-top: 10px;
 }
 
+#progress-refresh {
+  min-width: 23%;
+}
+
 /* FEED
 ================================================== */
 .flex-row {
