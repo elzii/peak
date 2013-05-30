@@ -380,6 +380,9 @@ body {
   margin: 0px;
   padding: 0px;
 }
+body a {
+  color: #596f77;
+}
 
 * {
   margin: 0;
@@ -420,7 +423,56 @@ html {
   padding-top: 10px;
 }
 
-/* TYPOGRAPHY
+/* NAVBAR
+================================================== */
+.navbar {
+  height: 40px;
+  max-height: 40px;
+}
+
+/* PROGRESS REFRESH
+================================================== */
+.navbar-progress-wrap {
+  width: 300px;
+  height: 40px;
+  float: right;
+  padding-top: 10px;
+}
+
+/* FEED
+================================================== */
+.flex-row {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flexbox;
+  margin-bottom: 30px;
+}
+
+.feed {
+  position: relative;
+  display: block;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  float: none !important;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+.feed h4 a {
+  font-size: inherit;
+}
+.feed a, .feed span, .feed p {
+  font-size: 12px;
+}
+
+.feed-inner {
+  padding: 10px;
+}
+
+/* FEED TYPOGRAPHY
 ================================================== */
 h2.hr {
   position: relative;
@@ -453,32 +505,6 @@ img.icn-header {
   border-radius: 4px 0 0 0;
 }
 
-.flex-row {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flexbox;
-  margin-bottom: 30px;
-}
-
-.feed {
-  -webkit-border-radius: 0 0 4px 4px;
-  -moz-border-radius: 0 0 4px 4px;
-  -ms-border-radius: 0 0 4px 4px;
-  -o-border-radius: 0 0 4px 4px;
-  border-radius: 0 0 4px 4px;
-  float: none !important;
-}
-.feed h4 a {
-  font-size: inherit;
-}
-.feed a, .feed span, .feed p {
-  font-size: 12px;
-}
-
-.feed-inner {
-  padding: 10px;
-}
-
 /* FEED MIXIN
 ================================================== */
 /* Hacker News
@@ -492,6 +518,9 @@ img.icn-header {
   color: #fdf2ea;
   border-bottom: 1px solid #f0791e;
 }
+#hackernews a {
+  color: #f28736;
+}
 
 /* Designer News
 ================================================== */
@@ -503,6 +532,9 @@ img.icn-header {
   background: #164fa5;
   color: #f1f6fd;
   border-bottom: 1px solid #13448f;
+}
+#designernews a {
+  color: #164fa5;
 }
 
 /* Github
@@ -516,6 +548,9 @@ img.icn-header {
   color: #2a2a2a;
   border-bottom: 1px solid #e6e6e6;
 }
+#github a {
+  color: #2a2a2a;
+}
 #github p {
   margin-bottom: 3px;
 }
@@ -523,19 +558,32 @@ img.icn-header {
 /* Nettuts
 ================================================== */
 #nettuts {
-  background: #ebfdfa;
-  border: 1px solid #d4fbf4;
+  background: #f1fefc;
+  border: 1px solid #d9fcf7;
 }
 #nettuts h2 {
   background: #4aa699;
-  color: #ebfdfa;
+  color: #f1fefc;
   border-bottom: 1px solid #429489;
+}
+#nettuts a {
+  color: #4aa699;
 }
 
 /* Dribbble
 ================================================== */
 #dribbble {
+  background: lavenderblush;
+  border: 1px solid #ffd7e4;
   clear: both;
+}
+#dribbble h2 {
+  background: #dc3f72;
+  color: lavenderblush;
+  border-bottom: 1px solid #d82962;
+}
+#dribbble a {
+  color: #dc3f72;
 }
 #dribbble:after {
   position: absolute;
@@ -560,6 +608,18 @@ img.icn-header {
 
 /* Stack Overflow
 ================================================== */
+#stackoverflow {
+  background: #fff6ec;
+  border: 1px solid #ffead3;
+}
+#stackoverflow h2 {
+  background: #444444;
+  color: #fff6ec;
+  border-bottom: 1px solid #373737;
+}
+#stackoverflow a {
+  color: #444444;
+}
 #stackoverflow .stackoverflow_answered .answered {
   color: #46a546;
 }
@@ -575,4 +635,13 @@ img.icn-header {
 .xmlfeed_desc a {
   color: gray;
   font-weight: 600;
+}
+
+/* DEBUG TOGGLES/STYLES
+================================================== */
+a.debug-toggle {
+  color: #d48749 !important;
+}
+a.debug-toggle:hover {
+  color: #e3b087 !important;
 }

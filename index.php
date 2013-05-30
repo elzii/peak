@@ -52,6 +52,10 @@
   
   <!-- jQuery -->
   <script src="js/jquery-1.9.1.min.js"></script>
+  <!-- App -->
+  <script src="js/app.js"></script>
+  <!-- Vendor JS -->
+  <script src="js/midway.min.js"></script>
 
   </head>
 <body>
@@ -71,7 +75,7 @@
             <ul class="nav">
               <li class="active"><a href="#">Dev</a></li>
               <li><a href="#about">Design</a></li>
-              <li><a href="#contact">About</a></li>
+              <li><a id="toggle-debug_time" class="debug-toggle" href="#">Debug</a></li>
               <!-- <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -87,6 +91,13 @@
             </ul>
           </div> 
           <!--/.nav-collapse -->
+          <div class="navbar-progress-wrap">
+            <div id="progress-refresh" class="progress">
+              <div class="bar" style="width: <?php $helpers->timeElapsedPercent(); ?>%;">
+                <span><?php $helpers->timeTilRefresh(); ?></span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -97,6 +108,8 @@
 
 
       <?php /* Time Debugging */ $helpers->modifiedTimeDebugging(); ?>
+      
+
 
 
       <!-- ROW 1
@@ -109,15 +122,12 @@
             HackerNews
           </h2>
             <div class="feed-inner">
-              <div class="feed-inner-wrap">
-                
-            <?php 
-              $items =  $api_hackernews->getJSON();
-                        $api_hackernews->writeJSON( $items, 5 );
-                        $api_hackernews->readJSON();
-                        //$api_hackernews->getPosts( $items );
-            ?>
-              </div>
+              <?php 
+                $items =  $api_hackernews->getJSON();
+                          $api_hackernews->writeJSON( $items, 5 );
+                          $api_hackernews->readJSON();
+                          //$api_hackernews->getPosts( $items );
+              ?>
             </div>
         </div>
         <!-- *-====-* DESIGNERNEWS *-====-* -->
@@ -127,15 +137,12 @@
             DesignerNews
           </h2>
             <div class="feed-inner">
-              <div class="feed-inner-wrap">
-                
-            <?php 
-              $stories =  $scraper_designernews->scrapeStories();
-                          //$scraper_siteinspire->displaySites( $stories, 5 );
-                          $scraper_designernews->writeJSON( $stories, 5);
-                          $scraper_designernews->readJSON();
-            ?>
-              </div>
+              <?php 
+                $stories =  $scraper_designernews->scrapeStories();
+                            //$scraper_siteinspire->displaySites( $stories, 5 );
+                            $scraper_designernews->writeJSON( $stories, 5);
+                            $scraper_designernews->readJSON();
+              ?>
             </div>
         </div>
         <!-- *-====-* GITHUB *-====-* -->
@@ -145,15 +152,12 @@
             Github Repos
           </h2>
             <div class="feed-inner">
-              <div class="feed-inner-wrap">
-                
-            <?php 
-              $repos   =  $scraper_github->scrapeTrendingRepos('today');
-                          //$scraper_github->displayTrendingRepos($repos);
-                          $scraper_github->writeJSON( $repos, 5);
-                          $scraper_github->readJSON();
-            ?>
-              </div>
+              <?php 
+                $repos   =  $scraper_github->scrapeTrendingRepos('today');
+                            //$scraper_github->displayTrendingRepos($repos);
+                            $scraper_github->writeJSON( $repos, 5);
+                            $scraper_github->readJSON();
+              ?>
             </div>
         </div>
       </div>
@@ -169,18 +173,45 @@
             Nettuts
           </h2>
             <div class="feed-inner">
-              <div class="feed-inner-wrap">
-                
-            <?php 
-              $articles = $xml_nettuts->getXML('http://feeds.feedburner.com/nettuts-summary?fmt=xml'); 
-                          //$xml_nettuts->displayFeed( $articles, 5 );
-                          $xml_nettuts->writeJSON( $articles, 5 );
-                          $xml_nettuts->readJSON();
-            ?>
-              </div>
+              <?php 
+                $articles = $xml_nettuts->getXML('http://feeds.feedburner.com/nettuts-summary?fmt=xml'); 
+                            //$xml_nettuts->displayFeed( $articles, 5 );
+                            $xml_nettuts->writeJSON( $articles, 5 );
+                            $xml_nettuts->readJSON();
+              ?>
             </div>
         </div>
-        
+        <!-- *-====-* DRIBBBLE *-====-* -->
+         <div id="dribbble" class="feed span4">
+          <h2 class="hr">
+            <img class="icn-header" src="img/icon-dribbble-alt.png" alt="Dribbble">
+            Dribbble Shots
+          </h2>
+          <div class="feed-inner">
+            <div class="dribbble_shots">
+              <?php 
+                $shots =  $api_dribbble->getJSON(6);
+                          //$api_dribbble->getShots( $shots );
+                          $api_dribbble->writeJSON( $shots, 6 );
+                          $api_dribbble->readJSON();
+              ?>
+            </div>
+          </div>
+        </div>
+        <!-- *-====-* STACKOVERFLOW *-====-* -->
+        <div id="stackoverflow" class="feed span4">
+          <h2 class="hr">
+            <img class="icn-header" src="img/icon-stackoverflow.png" alt="Stack Overflow">
+            Stack Overflow
+          </h2>
+          <div class="feed-inner">
+            <?php 
+              $questions =  $api_stackoverflow->getJSON(5);
+                            $api_stackoverflow->getQuestions( $questions );
+            ?>
+          </div>
+        </div>
+
 
 
       </div>
@@ -196,8 +227,6 @@
 
     </div> <!-- /container -->
    
-    <!-- App -->
-    <script src="js/app.js"></script>
 
   </body>
 </html>

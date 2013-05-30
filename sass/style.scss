@@ -20,6 +20,8 @@
 ================================================== */
 body {
 	margin:0px;padding:0px;
+
+	a {color:#596f77;}
 }
 * {
 	margin:0;padding:0;
@@ -65,31 +67,33 @@ html {overflow-y:scroll;}
 
 
 
-/* TYPOGRAPHY
+/* NAVBAR
 ================================================== */
-h2.hr {
-	position:relative;
-	height: 41px; //+1px for box-sizing
-	line-height: 40px;
-	padding:0;
-	margin:0;
-	font-size:20px;
-	@include border-radius(4px 4px 0 0);
-	width:100%;
-	display:block;
+.navbar {
+	height:40px;max-height:40px;
+
 }
 
-	img.icn-header {
-		float:none;
-		line-height:40px;
-		margin:0 10px 0 5px;padding:0;
-		position:relative;top:0px;
-		float:left;
-		@include border-radius(4px 0 0 0);
+/* PROGRESS REFRESH
+================================================== */
+.navbar-progress-wrap {
+	width:300px;height:40px;
+	float:right;
+	padding-top:10px;
 
-	}
+}
+#progress-refresh {
+	
+}
 
 
+
+
+
+
+
+/* FEED
+================================================== */
 .flex-row {
 	display: -webkit-box;
 	display: -moz-box;
@@ -98,22 +102,44 @@ h2.hr {
 }
 
 .feed {
+	position:relative;
+	display:block;
 	h4 a {font-size:inherit;}
 	a,span,p {font-size:12px;}
-	@include border-radius(0 0 4px 4px);
+	@include border-radius(4px);
 	float:none !important;
-	
+	width:100%;max-width:100%;
+	height:auto;
 }
 
 	.feed-inner {
 		padding:10px;
-		
-
-		.feed-inner-wrap {
-			
-		}
 	}
 
+
+	/* FEED TYPOGRAPHY
+	================================================== */
+	h2.hr {
+		position:relative;
+		height: 41px; //+1px for box-sizing
+		line-height: 40px;
+		padding:0;
+		margin:0;
+		font-size:20px;
+		@include border-radius(4px 4px 0 0);
+		width:100%;
+		display:block;
+	}
+
+		img.icn-header {
+			float:none;
+			line-height:40px;
+			margin:0 10px 0 5px;padding:0;
+			position:relative;top:0px;
+			float:left;
+			@include border-radius(4px 0 0 0);
+
+		}
 
 /* FEED MIXIN
 ================================================== */
@@ -121,10 +147,14 @@ h2.hr {
 
 	background:$color1;border:1px solid darken($color1, 5);
 
+
+
 	@if $color-alt-bool == true {
 		h2 {background: $color2;color:$color-alt;border-bottom:1px solid darken($color2, 5);}
+		a {color:$color-alt;}
 	} @else {
 		h2 {background: $color2;color:$color1;border-bottom:1px solid darken($color2, 5);}
+		a {color:$color2;}
 	}
 }
 
@@ -154,13 +184,15 @@ h2.hr {
 /* Nettuts
 ================================================== */
 #nettuts {
-	@include feed-colors(#ebfdfa,#4aa699);	
+	@include feed-colors(#f1fefc,#4aa699);	
 }
 
 
 /* Dribbble
 ================================================== */
 #dribbble {
+	@include feed-colors(#fff0f5,#dc3f72);		
+
 	clear:both;
 	&:after {position:absolute;content:'';width:0;height:0;clear:both;}
 	
@@ -183,6 +215,7 @@ h2.hr {
 /* Stack Overflow
 ================================================== */
 #stackoverflow {
+	@include feed-colors(#fff6ec,#444444);
 
 	.stackoverflow_answered {
 
@@ -205,10 +238,13 @@ h2.hr {
 
 
 
+/* DEBUG TOGGLES/STYLES
+================================================== */
+a.debug-toggle {
+	color:#d48749 !important; 
 
-
-
-
+	&:hover {color:lighten(#d48749,15) !important;}
+}
 
 
 

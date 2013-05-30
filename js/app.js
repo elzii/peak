@@ -11,6 +11,7 @@
         PK.modals();
         PK.toggles();
         PK.github();
+        PK.positioning();
     }
     PK.setElements = function(){
         PK.elems = {};
@@ -55,7 +56,10 @@
     }
 
     PK.toggles = function(){
-
+        $('#toggle-debug_time').click(function(e){
+            e.preventDefault();
+            $('#debug-time').slideToggle(150);
+        });
         
     }
 
@@ -82,10 +86,14 @@
     }
 
     PK.loader_toggle = function(){
-        $('.loading').fadeOut(200);
-        $('#content').delay(200).fadeIn();
+        $('.loading').fadeOut(150);
+        $('#content').delay(150).fadeIn();
     }
 
+
+    PK.positioning = function(){
+
+    }
 
     /* WINDOW & DOCUMENT LOAD/READYs
     ================================================== */
