@@ -389,6 +389,23 @@ h2.hr {
 
 /* COLOR CLASSES
 ================================================== */
+/* CONTENT
+================================================== */
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -110px;
+  width: 220px;
+  height: 20px;
+  background: url("../img/ajax-loader.gif");
+}
+
+#content {
+  display: none;
+  position: relative;
+}
+
 /* TYPOGRAPHY
 ================================================== */
 h1.hr {
@@ -502,4 +519,11 @@ img.icn-header {
 }
 #stackoverflow .stackoverflow_tags {
   color: #6baec2;
+}
+
+/* XML Feeds
+================================================== */
+.xmlfeed_desc a {
+  color: gray;
+  font-weight: 600;
 }

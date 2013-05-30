@@ -3,8 +3,6 @@
   require_once 'APIs.php';
   require_once 'XMLParser.php';
 
-  $helpers              = new Helpers();
-
   $scraper_github       = new Github();
   $scraper_designernews = new DesignerNews();
   $scraper_siteinspire  = new SiteInspire();
@@ -55,7 +53,7 @@
 
   </head>
 <body>
-  
+
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -89,15 +87,7 @@
       </div>
     </div>
 
-    <div class="loading"></div>
-
-    <div id="content" class="container">
-
-
-      <?php 
-        //Debug
-        $helpers->modifiedTimeDebugging();
-      ?>
+    <div class="container">
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <!-- <div class="hero-unit">
@@ -105,6 +95,66 @@
         <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
         <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
       </div> -->
+
+
+      <!-- ROW 1
+      =================================================== -->
+      <div class="row">
+        <div id="hacker_news" class="feed span4">
+          <img class="icn-header" src="img/icon-hackernews.png" alt="Hacker News"><h2 class="hr">HackerNews</h2>
+          <?php 
+            $items =  $api_hackernews->getJSON();
+                      $api_hackernews->getPosts( $items );
+          ?>
+        </div>
+        <div id="designer_news" class="feed span4">
+          <img class="icn-header" src="img/icon-designernews.png" alt="Designer News"><h2 class="hr">DesignerNews</h2>
+          <?php 
+              $stories =  $scraper_designernews->scrapeStories();
+                          $scraper_designernews->displayStories($stories, 5);
+          ?>
+        </div>
+        <div id="r_webdev" class="feed span4">
+          <img class="icn-header" src="img/icon-reddit.png" alt="Subreddit"><h2 class="hr">Dev Subreddits</h2>
+          <?php 
+            $items =  $api_redditdev->getJSON(5);
+                      $api_redditdev->getPosts( $items );
+          ?>
+        </div>
+      </div>
+
+
+      <!-- ROW 2
+      =================================================== -->
+      <div class="row">
+        
+        <div id="dribbble" class="feed span4">
+          <img class="icn-header" src="img/icon-dribbble.png" alt="Dribbble"><h2 class="hr">Dribbble Shots</h2>
+          
+          <div class="dribbble_shots">
+            <?php 
+              $shots =  $api_dribbble->getJSON(6);
+                        $api_dribbble->getShots( $shots );
+            ?>
+          </div>
+        </div>
+        <div id="stackoverflow" class="feed span4">
+          <img class="icn-header" src="img/icon-stackoverflow.png" alt="Stack Overflow"><h2 class="hr">Stack Overflow</h2>
+            <?php 
+              $questions =  $api_stackoverflow->getJSON(5);
+                            $api_stackoverflow->getQuestions( $questions );
+            ?>
+        </div>
+        <div id="github" class="feed span4">
+          <img class="icn-header" src="img/icon-github.png" alt="Github"><h2 class="hr">Github Repos</h2>
+          <?php 
+              $repos   =  $scraper_github->scrapeTrendingRepos('today');
+                          $scraper_github->displayTrendingRepos($repos);
+          ?>
+        </div>
+      </div>
+
+
 
 
       <!-- ROW 3
@@ -124,35 +174,22 @@
         <div id="nettuts" class="feed span4">
           <img class="icn-header" src="img/icon-nettuts.png" alt="Nettuts"><h2 class="hr">Nettuts</h2>
           
-            <?php 
-              $articles = $xml_nettuts->getXML('http://feeds.feedburner.com/nettuts-summary?fmt=xml'); 
-                          //$xml_nettuts->displayFeed( $articles, 5 );
-                          $xml_nettuts->writeJSON( $articles, 5 );
-                          $xml_nettuts->readJSON();
-            ?>
-        
-        </div>
-        <div id="hacker_news" class="feed span4">
-          <img class="icn-header" src="img/icon-hackernews.png" alt="Hacker News"><h2 class="hr">HackerNews</h2>
-            
-            <?php 
-              $items =  $api_hackernews->getJSON();
-                        $api_hackernews->writeJSON( $items, 5 );
-                        $api_hackernews->readJSON();
-                        //$api_hackernews->getPosts( $items );
-            ?>
-
-        </div>
-        <div id="github" class="feed span4">
-          <img class="icn-header" src="img/icon-github.png" alt="Github"><h2 class="hr">Github Repos</h2>
-          
-            <?php 
-                $repos   =  $scraper_github->scrapeTrendingRepos('today');
-                            //$scraper_github->displayTrendingRepos($repos);
-                            $scraper_github->writeJSON( $repos, 5);
-                            $scraper_github->readJSON();
-            ?>
-
+          <div class="inspireinspire_sites">
+              <?php 
+                $articles = $xml_nettuts->getXML('http://feeds.feedburner.com/nettuts-summary?fmt=xml'); 
+                            //$xml_nettuts->displayFeed( $articles, 5 );
+                            $xml_nettuts->writeJSON( $articles, 5 );
+                            $xml_nettuts->readJSON();
+                            $xml_nettuts->modifiedTimeDebugging();
+              ?>
+              
+                <?php 
+                  // $articles = $xml_nettuts->getXML('http://feeds.feedburner.com/nettuts-summary?fmt=xml'); 
+                  //             $xml_nettuts->writeJSON( $articles, 5 );
+                  //             $xml_nettuts->readJSON();
+                ?>    
+              
+          </div>
         </div>
       </div>
 

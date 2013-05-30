@@ -64,13 +64,35 @@
 
     }
 
+    PK.cleanup = function(){
+        //XML Feed Date remove (mm-dd-yy)
+        var $dateStr = $('.xmlfeed_date i');
+        $dateStr.each(function(i){
+
+            var dateStr  = $(this).text();
+            var dateJunk = dateStr.substr(dateStr.length - 14);
+
+            dateStr = dateStr.replace(dateJunk, " ");
+            $(this).text(dateStr);
+
+        });
+
+        //XML Feed 'feedflare' (social stuff) remove
+        $('.xmlfeed_desc .feedflare').remove();
+    }
+
+    PK.loader_toggle = function(){
+        $('.loading').fadeOut(200);
+        $('#content').delay(200).fadeIn();
+    }
+
 
     /* WINDOW & DOCUMENT LOAD/READYs
     ================================================== */
     $(window).load(function(){
         //Do stuff on window load
-        
-        
+        PK.cleanup();
+        PK.loader_toggle();
     });
 
     $(window).resize(function(){
