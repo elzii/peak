@@ -83,7 +83,8 @@ html {overflow-y:scroll;}
 
 }
 #progress-refresh {
-	min-width:23%;
+	
+	.bar {min-width:23%;}
 }
 
 
@@ -229,11 +230,28 @@ html {overflow-y:scroll;}
 }
 
 
+/* Medium
+================================================== */
+#medium {
+	@include feed-colors(#f4f4f2,#333332);
+
+
+	.medium_avatar {
+		width:44px;height:44px;float:right;margin:0 7px 10px 20px;
+		@include border-radius(22px);
+		border:1px solid #2a2a2a;
+	}
+}
+
 
 
 /* XML Feeds
 ================================================== */
 .xmlfeed_desc a {color:gray;font-weight:600;}
+
+	/* ENVATO
+	================================================== */
+	.feedflare {display:none;}
 
 
 

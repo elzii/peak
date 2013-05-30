@@ -8,6 +8,7 @@
   $scraper_github       = new Github();
   $scraper_designernews = new DesignerNews();
   $scraper_siteinspire  = new SiteInspire();
+  $scraper_medium       = new Medium();
   
   $api_hackernews       = new HackerNews();
   $api_redditdev        = new RedditDev();
@@ -145,18 +146,17 @@
               ?>
             </div>
         </div>
-        <!-- *-====-* GITHUB *-====-* -->
-        <div id="github" class="feed span4">
+        <!-- *-====-* MEDIUM *-====-* -->
+        <div id="medium" class="feed span4">
           <h2 class="hr">
-            <img class="icn-header" src="img/icon-github.png" alt="Github">
-            Github Repos
+            <img class="icn-header" src="img/icon-medium.png" alt="Medium">
+            Medium
           </h2>
-            <div class="feed-inner">
+            <div class="feed-inner">              
               <?php 
-                $repos   =  $scraper_github->scrapeTrendingRepos('today');
-                            //$scraper_github->displayTrendingRepos($repos);
-                            $scraper_github->writeJSON( $repos, 5);
-                            $scraper_github->readJSON();
+                $articles = $scraper_medium->scrapeArticles();
+                            $scraper_medium->writeJSON( $articles, 5);
+                            $scraper_medium->readJSON();
               ?>
             </div>
         </div>
@@ -167,7 +167,7 @@
       =================================================== -->
       <div class="row flex-row">
         <!-- *-====-* NETTUTS *-====-* -->
-        <div id="nettuts" class="feed span4">
+        <div id="nettuts" class="envato feed span4">
           <h2 class="hr">
             <img class="icn-header" src="img/icon-nettuts.png" alt="Nettuts">
             Nettuts
@@ -190,9 +190,9 @@
           <div class="feed-inner">
             <div class="dribbble_shots">
               <?php 
-                $shots =  $api_dribbble->getJSON(6);
+                $shots =  $api_dribbble->getJSON(8);
                           //$api_dribbble->getShots( $shots );
-                          $api_dribbble->writeJSON( $shots, 6 );
+                          $api_dribbble->writeJSON( $shots, 8 );
                           $api_dribbble->readJSON();
               ?>
             </div>
@@ -212,10 +212,30 @@
           </div>
         </div>
 
-
-
       </div>
 
+
+
+      <!-- ROW 3
+      =================================================== -->
+      <div class="row flex-row">
+        <!-- *-====-* GITHUB *-====-* -->
+        <div id="github" class="feed span4">
+          <h2 class="hr">
+            <img class="icn-header" src="img/icon-github.png" alt="Github">
+            Github Repos
+          </h2>
+            <div class="feed-inner">
+              <?php 
+                $repos   =  $scraper_github->scrapeTrendingRepos('today');
+                            //$scraper_github->displayTrendingRepos($repos);
+                            $scraper_github->writeJSON( $repos, 5);
+                            $scraper_github->readJSON();
+              ?>
+            </div>
+        </div>
+
+      </div>
 
 
 

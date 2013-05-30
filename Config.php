@@ -12,6 +12,7 @@ $GLOBALS = array(
 	'json_url_stackoverflow'	=> 'json/stackoverflow.json',
 	'json_url_github'			=> 'json/github.json',
 	'json_url_nettuts'			=> 'json/nettuts.json',
+	'json_url_medium'			=> 'json/medium.json',
 	//JSON URLs
 );
 

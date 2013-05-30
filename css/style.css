@@ -439,7 +439,7 @@ html {
   padding-top: 10px;
 }
 
-#progress-refresh {
+#progress-refresh .bar {
   min-width: 23%;
 }
 
@@ -634,11 +634,44 @@ img.icn-header {
   color: #6baec2;
 }
 
+/* Medium
+================================================== */
+#medium {
+  background: #f4f4f2;
+  border: 1px solid #e8e8e4;
+}
+#medium h2 {
+  background: #333332;
+  color: #f4f4f2;
+  border-bottom: 1px solid #262625;
+}
+#medium a {
+  color: #333332;
+}
+#medium .medium_avatar {
+  width: 44px;
+  height: 44px;
+  float: right;
+  margin: 0 7px 10px 20px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  -ms-border-radius: 22px;
+  -o-border-radius: 22px;
+  border-radius: 22px;
+  border: 1px solid #2a2a2a;
+}
+
 /* XML Feeds
 ================================================== */
 .xmlfeed_desc a {
   color: gray;
   font-weight: 600;
+}
+
+/* ENVATO
+================================================== */
+.feedflare {
+  display: none;
 }
 
 /* DEBUG TOGGLES/STYLES
