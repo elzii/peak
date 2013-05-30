@@ -64,13 +64,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Peak</a>
-          <!-- <div class="nav-collapse collapse">
+          <a class="brand" href="#">
+            Peak
+          </a>
+          <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li class="dropdown">
+              <li class="active"><a href="#">Dev</a></li>
+              <li><a href="#about">Design</a></li>
+              <li><a href="#contact">About</a></li>
+              <!-- <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Action</a></li>
@@ -81,9 +83,9 @@
                   <li><a href="#">Separated link</a></li>
                   <li><a href="#">One more separated link</a></li>
                 </ul>
-              </li>
+              </li> -->
             </ul>
-          </div> --> 
+          </div> 
           <!--/.nav-collapse -->
         </div>
       </div>
@@ -94,68 +96,94 @@
     <div id="content" class="container">
 
 
-      <?php 
-        //Debug
-        $helpers->modifiedTimeDebugging();
-      ?>
-
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <!-- <div class="hero-unit">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-      </div> -->
+      <?php /* Time Debugging */ $helpers->modifiedTimeDebugging(); ?>
 
 
-      <!-- ROW 3
+      <!-- ROW 1
       =================================================== -->
-       <div class="row">
-        
-        <!-- <div id="siteinspire" class="feed span4">
-          <img class="icn-header" src="img/icon-siteinspire.png" alt="Dribbble"><h2 class="hr">siteInspire Latest</h2>
-          
-          <div class="inspireinspire_sites">
-            <?php 
-              $sites =  $scraper_siteinspire->scrapeSites(6);
-                        $scraper_siteinspire->displaySites( $sites, 5 );
-            ?>
-          </div>
-        </div> -->
-        <div id="nettuts" class="feed span4">
-          <img class="icn-header" src="img/icon-nettuts.png" alt="Nettuts"><h2 class="hr">Nettuts</h2>
-          
-            <?php 
-              $articles = $xml_nettuts->getXML('http://feeds.feedburner.com/nettuts-summary?fmt=xml'); 
-                          //$xml_nettuts->displayFeed( $articles, 5 );
-                          $xml_nettuts->writeJSON( $articles, 5 );
-                          $xml_nettuts->readJSON();
-            ?>
-        
-        </div>
-        <div id="hacker_news" class="feed span4">
-          <img class="icn-header" src="img/icon-hackernews.png" alt="Hacker News"><h2 class="hr">HackerNews</h2>
-            
+       <div class="row flex-row">
+        <!-- *-====-* HACKERNEWS *-====-* -->
+        <div id="hackernews" class="feed span4">
+          <h2 class="hr">
+            <img class="icn-header" src="img/icon-hackernews.png" alt="Hacker News">
+            HackerNews
+          </h2>
+            <div class="feed-inner">
+              <div class="feed-inner-wrap">
+                
             <?php 
               $items =  $api_hackernews->getJSON();
                         $api_hackernews->writeJSON( $items, 5 );
                         $api_hackernews->readJSON();
                         //$api_hackernews->getPosts( $items );
             ?>
-
+              </div>
+            </div>
         </div>
-        <div id="github" class="feed span4">
-          <img class="icn-header" src="img/icon-github.png" alt="Github"><h2 class="hr">Github Repos</h2>
-          
+        <!-- *-====-* DESIGNERNEWS *-====-* -->
+        <div id="designernews" class="feed span4">
+          <h2 class="hr">
+            <img class="icn-header" src="img/icon-designernews.png" alt="Designer News">
+            DesignerNews
+          </h2>
+            <div class="feed-inner">
+              <div class="feed-inner-wrap">
+                
             <?php 
-                $repos   =  $scraper_github->scrapeTrendingRepos('today');
-                            //$scraper_github->displayTrendingRepos($repos);
-                            $scraper_github->writeJSON( $repos, 5);
-                            $scraper_github->readJSON();
+              $stories =  $scraper_designernews->scrapeStories();
+                          //$scraper_siteinspire->displaySites( $stories, 5 );
+                          $scraper_designernews->writeJSON( $stories, 5);
+                          $scraper_designernews->readJSON();
             ?>
-
+              </div>
+            </div>
+        </div>
+        <!-- *-====-* GITHUB *-====-* -->
+        <div id="github" class="feed span4">
+          <h2 class="hr">
+            <img class="icn-header" src="img/icon-github.png" alt="Github">
+            Github Repos
+          </h2>
+            <div class="feed-inner">
+              <div class="feed-inner-wrap">
+                
+            <?php 
+              $repos   =  $scraper_github->scrapeTrendingRepos('today');
+                          //$scraper_github->displayTrendingRepos($repos);
+                          $scraper_github->writeJSON( $repos, 5);
+                          $scraper_github->readJSON();
+            ?>
+              </div>
+            </div>
         </div>
       </div>
 
+
+      <!-- ROW 2
+      =================================================== -->
+      <div class="row flex-row">
+        <!-- *-====-* NETTUTS *-====-* -->
+        <div id="nettuts" class="feed span4">
+          <h2 class="hr">
+            <img class="icn-header" src="img/icon-nettuts.png" alt="Nettuts">
+            Nettuts
+          </h2>
+            <div class="feed-inner">
+              <div class="feed-inner-wrap">
+                
+            <?php 
+              $articles = $xml_nettuts->getXML('http://feeds.feedburner.com/nettuts-summary?fmt=xml'); 
+                          //$xml_nettuts->displayFeed( $articles, 5 );
+                          $xml_nettuts->writeJSON( $articles, 5 );
+                          $xml_nettuts->readJSON();
+            ?>
+              </div>
+            </div>
+        </div>
+        
+
+
+      </div>
 
 
 

@@ -10,18 +10,34 @@ class HackerNews extends Helpers {
     private $ch;
 
     public function __construct() {
+      $modified_time  = $this->modifiedTime();
+
+      if (!$modified_time) {
+
 		    $this->ch = curl_init();
         curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($this->ch, CURLOPT_HTTPHEADER, array('Accept: application/json'));
         curl_setopt($this->ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
+
+      } else {
+         // Do nothing
+      } 
     }
 
     public function getJSON() {
-    	$url = "http://api.thriftdb.com/api.hnsearch.com/items/_search?pretty_print=true&filter[fields][create_ts]=[NOW-5HOURS%20TO%20NOW]&filter[queries][]=points:[5+TO+*]&limit=5&start=0";
+      $modified_time  = $this->modifiedTime();
+
+      if (!$modified_time) {
+    	 
+        $url = "http://api.thriftdb.com/api.hnsearch.com/items/_search?pretty_print=true&filter[fields][create_ts]=[NOW-5HOURS%20TO%20NOW]&filter[queries][]=points:[5+TO+*]&limit=5&start=0";
         curl_setopt($this->ch, CURLOPT_URL, $url);
         $output = curl_exec($this->ch);
         return $output;
+
+      } else {
+         // Do nothing
+      }  
     }
 
     public function writeJSON( $items, $limit ) {

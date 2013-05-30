@@ -11,20 +11,6 @@ class Envato extends Helpers {
         
     }
 
-    public function writeXMLtoJSON( $php_array, $json_file, $limit, $params ) {
-
-		$file		= $json_file;
-		$file 		= file_get_contents($file);
-		unset($file); //prevent memory leaks for large json.
-
-		for($i = 0; $i < $limit; $i++) {	
-			$items[] = $params;
-		}
-
-		file_put_contents($file,json_encode($items));
-		unset($items);//release memory
-	}
-
 	public function getXML($feed_url) {
 		$modified_time 	= $this->modifiedTime();
 
@@ -39,6 +25,19 @@ class Envato extends Helpers {
 		} else {
 			// Do nothing - not enough time has passed.
 		}
+	}
+
+    public function writeXMLtoJSON( $php_array, $json_file, $limit, $params ) {
+		$file		= $json_file;
+		$file 		= file_get_contents($file);
+		unset($file); //prevent memory leaks for large json.
+
+		for($i = 0; $i < $limit; $i++) {	
+			$items[] = $params;
+		}
+
+		file_put_contents($file,json_encode($items));
+		unset($items);//release memory
 	}
 
 	public function displayFeed( $articles, $limit ) {

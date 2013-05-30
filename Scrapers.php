@@ -5,11 +5,16 @@
 require_once 'Helpers.php';
 require_once 'lib/HTML5/Parser.php';
 
+
+
+/* GITHUB
+================================================== */
+
 class Github extends Helpers {
 
 	private $ch;
 
-    public function __construct() {}
+  public function __construct() {}
 
 	public function scrapeTrendingRepos( $timeframe ){
 
@@ -19,9 +24,9 @@ class Github extends Helpers {
 
   		// cURL
   		$this->ch 	= curl_init("https://github.com/explore/");
-  					  curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
-  		$output 	= curl_exec($this->ch);
-  				  	  curl_close($this->ch);
+  					        curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
+  		$output 	  = curl_exec($this->ch);
+  				  	      curl_close($this->ch);
 
   		// Check if it even exists
   		if(empty($output)) exit('Couldn\'t download the page');		
@@ -133,11 +138,11 @@ class Github extends Helpers {
 			$str = '<div style="margin-bottom:30px;">';
 			$str .= '<h4>';
 			$str .= '<a class="github_author" href="http://github.com'.$reposArr[$i][5].'" target="_blank">'.$reposArr[$i][4].'</a> / ';
-    		$str .= '<a class="github_repo" href="http://github.com'.$reposArr[$i][7].'" target="_blank">'.$reposArr[$i][6].'</a>';
-      		$str .= '</h4>';
+  		$str .= '<a class="github_repo" href="http://github.com'.$reposArr[$i][7].'" target="_blank">'.$reposArr[$i][6].'</a>';
+  		$str .= '</h4>';
 			$str .= '<p class="github_description">'.$reposArr[$i][8].'</p>';
-      		$str .= '<a style="color:#1c1c1c;margin-right:10px;" href="http://github.com'.$reposArr[$i][1].'" class="github_watchers"><b>'.$reposArr[$i][0].'</b> watchers</a>';
-      		$str .= '<a style="color:gray;" href="http://github.com'.$reposArr[$i][3].'" class="github_forks"><b>'.$reposArr[$i][2].'</b> forks</a>';
+  		$str .= '<a style="color:#1c1c1c;margin-right:10px;" href="http://github.com'.$reposArr[$i][1].'" class="github_watchers"><b>'.$reposArr[$i][0].'</b> watchers</a>';
+  		$str .= '<a style="color:gray;" href="http://github.com'.$reposArr[$i][3].'" class="github_forks"><b>'.$reposArr[$i][2].'</b> forks</a>';
 			$str .= '</div>';
 
 			echo $str;
@@ -147,52 +152,65 @@ class Github extends Helpers {
 }
 
 
-class DesignerNews {
+
+
+/* DESIGNER NEWS
+================================================== */
+
+class DesignerNews extends Helpers {
 
 	private $ch;
 
-    public function __construct() {
-    	
-    }
+  public function __construct() {
+  	
+  }
 
 	public function scrapeStories(){
 
-		// cURL
-		$this->ch 	= curl_init("https://news.layervault.com/");
-					  curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
-		$output 	= curl_exec($this->ch);
-				  	  curl_close($this->ch);
+    $modified_time  = $this->modifiedTime();
 
-		// Check if it even exists
-		if(empty($output)) exit('Couldn\'t download the page');		
+    if (!$modified_time) { 
 
-		$dom = new DOMDocument();
-		$dom->loadHTML($output);
-		$xpath = new DOMXPath($dom);
-		 
-		// Find stuff
-		$classname="Story";
-		$result = $xpath->query("
-				//li[@class='$classname']/a[@class='StoryUrl'] |
-				//li[@class='$classname']/a[@class='StoryUrl']/@href|//td[@class='name'] |
-				//li[@class='$classname']/*/span[@class='PointCount'] |
-				//li[@class='$classname']/*/span[@class='Timeago'] | 
-				//li[@class='$classname']/*/a[@class='CommentCount']
-			");
+  		// cURL
+  		$this->ch 	= curl_init("https://news.layervault.com/");
+  					        curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
+  		$output 	  = curl_exec($this->ch);
+  				  	      curl_close($this->ch);
 
-		// Get all the data, store them into 1d array
-		$data = array();
-		if (!is_null($result)) {
+  		// Check if it even exists
+  		if(empty($output)) exit('Couldn\'t download the page');		
 
-		  foreach ($result as $key => $element) {
-		    $nodes = $element->nodeValue;
+  		$dom = new DOMDocument();
+  		$dom->loadHTML($output);
+  		$xpath = new DOMXPath($dom);
+  		 
+  		// Find stuff
+  		$classname="Story";
+  		$result = $xpath->query("
+  				//li[@class='$classname']/a[@class='StoryUrl'] |
+  				//li[@class='$classname']/a[@class='StoryUrl']/@href|//td[@class='name'] |
+  				//li[@class='$classname']/*/span[@class='PointCount'] |
+  				//li[@class='$classname']/*/span[@class='Timeago'] | 
+  				//li[@class='$classname']/*/a[@class='CommentCount']
+  			");
 
-		    $data[$key] = $nodes;
+  		// Get all the data, store them into 1d array
+  		$data = array();
+  		if (!is_null($result)) {
 
-		  }
-		}
-		
-		return $stories = array_chunk($data, 5);
+  		  foreach ($result as $key => $element) {
+  		    $nodes = $element->nodeValue;
+
+  		    $data[$key] = $nodes;
+
+  		  }
+  		}
+  		
+  		return $stories = array_chunk($data, 5);
+
+    } else {
+      //Do nothing
+    } 
 	}
 
 	public function displayStories( $storyArr, $limit ) {
@@ -211,29 +229,55 @@ class DesignerNews {
 
 	public function writeJSON( $storyArr, $limit ) {
 
-		$file = file_get_contents('json/designernews.json');
-		$data = json_decode($file);
-		unset($file); //prevent memory leaks for large json.
+    $modified_time  = $this->modifiedTime();
 
-		$jsonArr = array();
+    if (!$modified_time) { 
 
-		for($i = 0; $i < $limit; $i++) {
+  		$file = file_get_contents($GLOBALS['json_url_designernews']);
+  		$data = json_decode($file);
+  		unset($file); //prevent memory leaks for large json.
 
-			$jsonArr[] = array(
-				'url' 		=> 	$storyArr[$i][1],
-				'title'  	=> 	$storyArr[$i][0],
-				'points'  	=> 	$storyArr[$i][2],
-				'time'  	=> 	$storyArr[$i][3],
-				'comments'  => 	$storyArr[$i][4]
-			);
+  		$jsonArr = array();
 
-		}
+  		for($i = 0; $i < $limit; $i++) {
 
-			
-		file_put_contents('json/designernews.json',json_encode($jsonArr));
-		unset($jsonArr);//release memory
+  			$jsonArr[] = array(
+  				'url' 		  => 	$storyArr[$i][1],
+  				'title'  	  => 	$storyArr[$i][0],
+  				'points'    => 	$storyArr[$i][2],
+  				'time'      => 	$storyArr[$i][3],
+  				'comments'  => 	$storyArr[$i][4]
+  			);
+
+  		}
+
+  		file_put_contents('json/designernews.json',json_encode($jsonArr));
+  		unset($jsonArr);//release memory
+
+    } else {
+      //Do nothing
+    }
 
 	}
+
+
+  public function readJSON() {
+
+    $json_string  = file_get_contents($GLOBALS['json_url_designernews']);
+    $json_array   = json_decode($json_string, true);
+
+      foreach($json_array as $result) {
+
+          $str = '<div style="margin-bottom:30px;">';
+          $str .= '<h4><a class="designernews_link" href="'.$result['url'].'" target="_blank">'.$result['title'].'</a></h4>';
+          $str .= '<span class="designernews_points" style="margin-right:10px;"><b>'.$result['points'].'</b> </span>';
+          $str .= '<span class="designernews_comments" style="margin-right:10px;"><i>'.$result['time'].'</i> </span>';
+          $str .= '<a style="color:gray;" href="#" class="designernews_comments"><b>'.$result['comments'].'</b> </a>';
+          $str .= '</div>';
+
+          echo $str;
+      }
+  }
 }
 
 

@@ -381,10 +381,23 @@ body {
   padding: 0px;
 }
 
-h2.hr {
-  border-bottom: 1px solid #cacaca;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
 }
 
 /* COLOR CLASSES
@@ -404,23 +417,57 @@ h2.hr {
 #content {
   display: none;
   position: relative;
+  padding-top: 10px;
 }
 
 /* TYPOGRAPHY
 ================================================== */
-h1.hr {
-  height: 40px;
+h2.hr {
+  position: relative;
+  height: 41px;
   line-height: 40px;
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  -ms-border-radius: 4px 4px 0 0;
+  -o-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  width: 100%;
+  display: block;
 }
 
 img.icn-header {
-  float: left;
-  height: 40px;
-  margin: 10px 15px 10px 0;
-  border: 1px solid #8a8a8a;
+  float: none;
   line-height: 40px;
+  margin: 0 10px 0 5px;
+  padding: 0;
+  position: relative;
+  top: 0px;
+  float: left;
+  -webkit-border-radius: 4px 0 0 0;
+  -moz-border-radius: 4px 0 0 0;
+  -ms-border-radius: 4px 0 0 0;
+  -o-border-radius: 4px 0 0 0;
+  border-radius: 4px 0 0 0;
 }
 
+.flex-row {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flexbox;
+  margin-bottom: 30px;
+}
+
+.feed {
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  -ms-border-radius: 0 0 4px 4px;
+  -o-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+  float: none !important;
+}
 .feed h4 a {
   font-size: inherit;
 }
@@ -428,59 +475,61 @@ img.icn-header {
   font-size: 12px;
 }
 
+.feed-inner {
+  padding: 10px;
+}
+
+/* FEED MIXIN
+================================================== */
+/* Hacker News
+================================================== */
+#hackernews {
+  background: #fdf2ea;
+  border: 1px solid #fbe4d3;
+}
+#hackernews h2 {
+  background: #f28736;
+  color: #fdf2ea;
+  border-bottom: 1px solid #f0791e;
+}
+
+/* Designer News
+================================================== */
+#designernews {
+  background: #f1f6fd;
+  border: 1px solid #dbe8fa;
+}
+#designernews h2 {
+  background: #164fa5;
+  color: #f1f6fd;
+  border-bottom: 1px solid #13448f;
+}
+
 /* Github
 ================================================== */
-#github ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+#github {
+  background: #f7f7f7;
+  border: 1px solid #eaeaea;
 }
-#github ul > li {
-  clear: both;
-  margin: 0 0 25px 0;
-  float: left;
-  width: 100%;
-}
-#github ul ul.repo-stats {
-  width: 12%;
-  float: right;
-}
-#github ul ul.repo-stats li {
-  height: 25px;
-  width: 100%;
-  display: block;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px;
-  background: #f9f9f9;
-  border: 1px solid #f1f1f1;
-  text-align: center;
-  line-height: 25px;
-  margin: 0 0 7px 0;
-}
-#github ul ul.repo-stats li a {
-  display: block;
+#github h2 {
+  background: #f3f3f3;
   color: #2a2a2a;
-  font-size: 13px;
-  width: 100%;
-}
-#github ul ul.repo-stats li a span {
-  font-size: 13px;
-}
-#github ul ul.repo-stats li:hover {
-  background: #f5f5f5;
-}
-#github ul ul.repo-stats li:hover a {
-  text-decoration: none;
-}
-#github ul h3 {
-  font-size: 20px;
-  line-height: 1;
+  border-bottom: 1px solid #e6e6e6;
 }
 #github p {
-  margin-bottom: 5px;
+  margin-bottom: 3px;
+}
+
+/* Nettuts
+================================================== */
+#nettuts {
+  background: #ebfdfa;
+  border: 1px solid #d4fbf4;
+}
+#nettuts h2 {
+  background: #4aa699;
+  color: #ebfdfa;
+  border-bottom: 1px solid #429489;
 }
 
 /* Dribbble
