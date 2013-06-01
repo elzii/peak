@@ -5,8 +5,6 @@
 require_once 'Helpers.php';
 require_once 'lib/HTML5/Parser.php';
 
-
-
 /* GITHUB
 ================================================== */
 
@@ -115,7 +113,7 @@ class Github extends Helpers {
 
       foreach($json_array as $json_article) {
 
-          $str = '<div style="margin-bottom:30px;">';
+          $str = '<div class="feed-item">';
     			$str .= '<h4>';
     			$str .= '<a class="github_author" href="http://github.com'.$json_article['url_author'].'" target="_blank">'.$json_article['author'].'</a> / ';
         	$str .= '<a class="github_repo" href="http://github.com'.$json_article['url_repo'].'" target="_blank">'.$json_article['repo'].'</a>';
@@ -135,7 +133,7 @@ class Github extends Helpers {
     //var_dump($reposArr);
 
 		for($i = 0; $i < 5; $i++) {
-			$str = '<div style="margin-bottom:30px;">';
+			$str = '<div class="feed-item">';
 			$str .= '<h4>';
 			$str .= '<a class="github_author" href="http://github.com'.$reposArr[$i][5].'" target="_blank">'.$reposArr[$i][4].'</a> / ';
   		$str .= '<a class="github_repo" href="http://github.com'.$reposArr[$i][7].'" target="_blank">'.$reposArr[$i][6].'</a>';
@@ -216,7 +214,7 @@ class DesignerNews extends Helpers {
 	public function displayStories( $storyArr, $limit ) {
 
 		for($i = 0; $i < $limit; $i++) {
-			$str = '<div style="margin-bottom:30px;">';
+			$str = '<div class="feed-item">';
 			$str .= '<h4><a class="designernews_link" href="'.$storyArr[$i][1].'" target="_blank">'.$storyArr[$i][0].'</a></h4>';
 			$str .= '<span class="designernews_points" style="margin-right:10px;"><b>'.$storyArr[$i][2].'</b> </span>';
 			$str .= '<span class="designernews_comments" style="margin-right:10px;"><i>'.$storyArr[$i][3].'</i> </span>';
@@ -268,7 +266,7 @@ class DesignerNews extends Helpers {
 
       foreach($json_array as $result) {
 
-          $str = '<div style="margin-bottom:30px;">';
+          $str = '<div class="feed-item">';
           $str .= '<h4><a class="designernews_link" href="'.$result['url'].'" target="_blank">'.$result['title'].'</a></h4>';
           $str .= '<span class="designernews_points" style="margin-right:10px;"><b>'.$result['points'].'</b> </span>';
           $str .= '<span class="designernews_comments" style="margin-right:10px;"><i>'.$result['time'].'</i> </span>';
@@ -298,7 +296,7 @@ class Medium extends Helpers {
     
   }
 
-  public function scrapeArticles(){
+  public function scrapeArticles( $limit ){
 
     $modified_time  = $this->modifiedTime();
 
@@ -353,7 +351,7 @@ class Medium extends Helpers {
       }
       
       //print_r($data);
-      return $articles = array_chunk($data, 5);
+      return $articles = array_chunk($data, $limit);
 
 
     } else {
@@ -378,7 +376,7 @@ class Medium extends Helpers {
         $jsonArr[] = array(
           'avatar'    =>  $articlesArr[$i][0],
           'title'     =>  $articlesArr[$i][1],
-          'url'       =>  $articlesArr[$i][2],
+          'url'       =>  'https://medium.com'.$articlesArr[$i][2],
           'author'    =>  $articlesArr[$i][3],
           'excerpt'   =>  $articlesArr[$i][4]
         );
@@ -401,7 +399,7 @@ class Medium extends Helpers {
 
       foreach($json_array as $result) {
 
-          $str = '<div style="margin-bottom:30px;">';
+          $str = '<div class="feed-item">';
           $str .= '<h4 style="clear:both;display:block;margin-bottom:4px;"><img class="medium_avatar" src="'.$result['avatar'].'"/><a class="medium_link" href="'.$result['url'].'" target="_blank">'.$result['title'].'</a></h4>';
           $str .= '<span class="medium_author" style="margin-right:10px;"><i>'.$result['author'].'</i> </span>';
           //$str .= '<p class="medium_excerpt"><b>'.$result['excerpt'].'</b> </span>';
@@ -477,7 +475,7 @@ class SiteInspire {
 		return $storyArr;
 
 		// for($i = 0; $i < $limit; $i++) {
-		// 	$str = '<div style="margin-bottom:30px;">';
+		// 	$str = '<div class="feed-item">';
 		// 	$str .= '<h4><a class="designernews_link" href="'.$storyArr[$i][1].'" target="_blank">'.$storyArr[$i][0].'</a></h4>';
 		// 	$str .= '<span class="designernews_points" style="margin-right:10px;"><b>'.$storyArr[$i][2].'</b> </span>';
 		// 	$str .= '<span class="designernews_comments" style="margin-right:10px;"><i>'.$storyArr[$i][3].'</i> </span>';

@@ -15,6 +15,11 @@
     }
     PK.setElements = function(){
         PK.elems = {};
+        PK.elems.loading    = $('.loading');
+        PK.elems.content    = $('#content');
+        PK.elems.feed       = $('#feed');
+        PK.elems.fl_dev     = $('#fl-dev');
+        PK.elems.fl_design  = $('#fl-design');
         
     }
     
@@ -116,13 +121,45 @@
     }
 
     PK.loader_toggle = function(){
-        $('.loading').fadeOut(150);
+        //$('.loading').fadeOut(150);
         $('#content').delay(150).fadeIn();
     }
 
 
     PK.positioning = function(){
 
+        function centerHack(obj) {
+
+        }
+    }
+
+    PK.feedLoader = function(button, feed) {
+
+        button.click(function(){
+            PK.elems.feed.fadeOut(50);
+            PK.elems.loading.fadeIn(50);
+            
+            $(this).parent().siblings().removeClass('active');
+            $(this).parent().addClass('active');
+
+            PK.elems.feed.load(feed, function() {
+                //Hide loader again
+                PK.elems.loading.fadeOut(50);
+                PK.elems.feed.hide().delay(50).fadeIn(250);
+            });
+
+        });
+    }
+
+    PK.loadDefaultFeed = function(feed) {
+        PK.elems.feed.fadeOut(50);
+        PK.elems.loading.fadeIn(50);
+
+        PK.elems.feed.empty().load(feed, function() {
+            //Hide loader
+            PK.elems.loading.fadeOut(50);
+            PK.elems.feed.fadeIn(250);
+        });
     }
 
     /* WINDOW & DOCUMENT LOAD/READYs
@@ -142,6 +179,9 @@
     $(document).ready(function(){
         
         PK.init();
+        PK.loadDefaultFeed('feed-dev.php');
+        PK.feedLoader(PK.elems.fl_dev, 'feed-dev.php');
+        PK.feedLoader(PK.elems.fl_design, 'feed-design.php');
 
     });//close document ready
 

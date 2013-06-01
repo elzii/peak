@@ -473,7 +473,15 @@ html {
 }
 
 .feed-inner {
+  display: table;
+  text-align: left;
+}
+
+.feed-item {
   padding: 10px;
+}
+.feed-item:last-of-type {
+  margin-bottom: 0;
 }
 
 /* FEED TYPOGRAPHY
@@ -525,6 +533,12 @@ img.icn-header {
 #hackernews a {
   color: #f28736;
 }
+#hackernews .feed-item {
+  border-bottom: 1px solid #fbe4d3;
+}
+#hackernews .feed-item:last-of-type {
+  border-bottom: none;
+}
 
 /* Designer News
 ================================================== */
@@ -540,6 +554,36 @@ img.icn-header {
 #designernews a {
   color: #164fa5;
 }
+#designernews .feed-item {
+  border-bottom: 1px solid #dbe8fa;
+}
+#designernews .feed-item:last-of-type {
+  border-bottom: none;
+}
+
+/* Reddit
+================================================== */
+#reddit {
+  background: #fdfdfd;
+  border: 1px solid #f0f0f0;
+}
+#reddit h2 {
+  background: #d3e5f9;
+  color: #494949;
+  border-bottom: 1px solid #bdd8f6;
+}
+#reddit a {
+  color: #494949;
+}
+#reddit .feed-item {
+  border-bottom: 1px solid #f0f0f0;
+}
+#reddit .feed-item:last-of-type {
+  border-bottom: none;
+}
+#reddit .reddit_subreddit {
+  color: #f27657;
+}
 
 /* Github
 ================================================== */
@@ -554,6 +598,12 @@ img.icn-header {
 }
 #github a {
   color: #2a2a2a;
+}
+#github .feed-item {
+  border-bottom: 1px solid #eaeaea;
+}
+#github .feed-item:last-of-type {
+  border-bottom: none;
 }
 #github p {
   margin-bottom: 3px;
@@ -573,6 +623,12 @@ img.icn-header {
 #nettuts a {
   color: #4aa699;
 }
+#nettuts .feed-item {
+  border-bottom: 1px solid #d9fcf7;
+}
+#nettuts .feed-item:last-of-type {
+  border-bottom: none;
+}
 
 /* Dribbble
 ================================================== */
@@ -589,6 +645,12 @@ img.icn-header {
 #dribbble a {
   color: #dc3f72;
 }
+#dribbble .feed-item {
+  border-bottom: 1px solid #ffd7e4;
+}
+#dribbble .feed-item:last-of-type {
+  border-bottom: none;
+}
 #dribbble:after {
   position: absolute;
   content: '';
@@ -598,16 +660,17 @@ img.icn-header {
 }
 #dribbble .dribbble_shot {
   float: left;
-  width: 47%;
-  margin-right: 15px;
-  margin-bottom: 15px;
+  width: 48%;
+  padding: 15px 0 0 15px;
 }
 #dribbble .dribbble_shot:nth-child(2n) {
-  margin-right: 0px;
+  padding-right: 0px;
 }
 #dribbble img.dribbble_shot_thumb {
   display: block;
   width: 100%;
+  border: 1px solid;
+  border: 1px solid #ffd7e4;
 }
 
 /* Stack Overflow
@@ -623,6 +686,12 @@ img.icn-header {
 }
 #stackoverflow a {
   color: #444444;
+}
+#stackoverflow .feed-item {
+  border-bottom: 1px solid #ffead3;
+}
+#stackoverflow .feed-item:last-of-type {
+  border-bottom: none;
 }
 #stackoverflow .stackoverflow_answered .answered {
   color: #46a546;
@@ -647,6 +716,12 @@ img.icn-header {
 }
 #medium a {
   color: #333332;
+}
+#medium .feed-item {
+  border-bottom: 1px solid #e8e8e4;
+}
+#medium .feed-item:last-of-type {
+  border-bottom: none;
 }
 #medium .medium_avatar {
   width: 44px;

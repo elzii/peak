@@ -60,7 +60,8 @@ class HackerNews extends Helpers {
             'url'           => $item[$i]['item']['url'],
             'title'         => $item[$i]['item']['title'],
             'points'        => $item[$i]['item']['points'],
-            'num_comments'  => $item[$i]['item']['num_comments']
+            'num_comments'  => $item[$i]['item']['num_comments'],
+            'url_comments'  => 'https://news.ycombinator.com/item?id='.$item[$i]['item']['id']
           );
         }
 
@@ -80,10 +81,10 @@ class HackerNews extends Helpers {
 
       foreach($json_array as $result){
 
-        $str = '<div style="margin-bottom:30px;">';
+        $str = '<div class="feed-item">';
         $str .= '<h4><a class="hackernews_link" href="'.$result['url'].'" target="_blank">'.$result['title'].'</a></h4>';
         $str .= '<span class="hackernews_points" style="margin-right:10px;"><b>'.$result['points'].' points </b></span>';
-        $str .= '<a style="color:gray;" href="#" class="hackernews_comments">'.$result['num_comments'].' comments </a>';
+        $str .= '<a style="color:gray;" href="'.$result['url_comments'].'" class="hackernews_comments">'.$result['num_comments'].' comments </a>';
         $str .= '</div>';
 
         echo $str;
@@ -101,7 +102,7 @@ class HackerNews extends Helpers {
         foreach($results as $result){
           $result_item = $result['item'];
 
-          $str = '<div style="margin-bottom:30px;">';
+          $str = '<div class="feed-item">';
           $str .= '<h4><a class="hackernews_link" href="'.$result_item['url'].'" target="_blank">'.$result_item['title'].'</a></h4>';
           $str .= '<span class="hackernews_points" style="margin-right:10px;"><b>'.$result_item['points'].' points </b></span>';
           $str .= '<a style="color:gray;" href="#" class="hackernews_comments">'.$result_item['num_comments'].' comments </a>';
@@ -115,7 +116,7 @@ class HackerNews extends Helpers {
 
 
 
-class RedditDev {
+class RedditDev extends Helpers {
 
     // http://api.ihackernews.com/page?format=jsonp&callback=hnJSON
 
@@ -136,18 +137,58 @@ class RedditDev {
         return $output;
     }
 
-    public function writeJSON() {
-      $url = "http://www.reddit.com/r/webdev+programming+javascript+jquery+web_design/.json";
-        curl_setopt($this->ch, CURLOPT_URL, $url);
+    public function writeJSON( $items, $limit ) {
+      $modified_time  = $this->modifiedTime();
 
-      $fp = fopen('json/hackernews.json', "w");
-        curl_setopt($this->ch, CURLOPT_FILE, $fp);
+      // if (!$modified_time) {
+        $json_file  = $GLOBALS['json_url_reddit'];
+        $file       = file_get_contents($json_file);
+        unset($file); //prevent memory leaks for large json.
 
-        $output = curl_exec($this->ch);
 
-      fwrite($fp, $output);
+        $items_arr      = json_decode($items, true);
+        $items          = $items_arr['data']['children'];
 
-      fclose($fp);
+        
+        //print_r(json_encode($items));
+
+        $itemsArr = array();
+        for($i = 0; $i < $limit; $i++) {  
+
+          $itemsArr[] = array(
+            'url'           => $items[$i]['data']['url'],
+            'title'         => $items[$i]['data']['title'],
+            'score'         => $items[$i]['data']['score'],
+            'num_comments'  => $items[$i]['data']['num_comments'],
+            'subreddit'     => $items[$i]['data']['subreddit']
+          );
+        }
+
+        file_put_contents($json_file,json_encode($itemsArr));
+        unset($itemsArr);//release memory
+
+      // } else {
+      //    // Do nothing
+      // }  
+    }
+
+
+    public function readJSON() {
+
+      $json_array  = file_get_contents($GLOBALS['json_url_reddit']);
+      $php_array   = json_decode($json_array, true);
+
+      foreach($php_array as $result){
+
+          $str = '<div class="feed-item">';
+          $str .= '<h4><a class="reddit_link" href="'.$result['url'].'" target="_blank">'.$result['title'].'</a></h4>';
+          $str .= '<span class="reddit_points" style="margin-right:10px;"><b>'.$result['score'].' points </b></span>';
+          $str .= '<a style="color:gray;margin-right:10px;" href="#" class="reddit_comments">'.$result['num_comments'].' comments </a>';
+          $str .= '<span class="reddit_subreddit" style="margin-right:10px;">'.$result['subreddit'].'</span>';
+          $str .= '</div>';
+
+          echo $str;
+      }
     }
 
     public function getPosts( $items ){
@@ -163,7 +204,7 @@ class RedditDev {
 
           //print_r($result_data);
 
-          $str = '<div style="margin-bottom:30px;">';
+          $str = '<div class="feed-item">';
           $str .= '<h4><a class="reddit_link" href="'.$result_data['url'].'" target="_blank">'.$result_data['title'].'</a></h4>';
           $str .= '<span class="reddit_points" style="margin-right:10px;"><b>'.$result_data['score'].' points </b></span>';
           $str .= '<a style="color:gray;" href="#" class="reddit_comments">'.$result_data['num_comments'].' comments </a>';
@@ -215,8 +256,6 @@ class Dribbble extends Helpers {
         //Do nothing
       }
     }
-
-
 
 
     public function writeJSON( $items, $limit ) {
@@ -285,8 +324,6 @@ class Dribbble extends Helpers {
           $str .= '<a class="dribbble_url" href="'.$result['url'].'" target="_blank">';
           $str .= '<img class="dribbble_shot_thumb" src='.$result['image_teaser_url'].'>';
           $str .= '</a>';
-          // $str .= '<span class="hackernews_points" style="margin-right:10px;"><b>'.$result_data['score'].' points </b></span>';
-          // $str .= '<a style="color:gray;" href="#" class="hackernews_comments">'.$result_data['num_comments'].' comments </a>';
           $str .= '</div>';
 
           echo $str;
@@ -324,6 +361,73 @@ class StackOverflow extends Helpers {
     }
 
 
+
+    public function writeJSON( $items, $limit ) {
+      $modified_time  = $this->modifiedTime();
+
+      if (!$modified_time) {
+        $json_file  = $GLOBALS['json_url_stackoverflow'];
+        $file       = file_get_contents($json_file);
+        unset($file); //prevent memory leaks for large json.
+
+
+        $items_d  = json_decode($items, true);
+        $item     = $items_d['items'];
+        
+        //print_r($item);
+
+        $itemsArr = array();
+        for($i = 0; $i < $limit; $i++) {  
+          $itemsArr[] = array(
+            'link'              => $item[$i]['link'],
+            'title'             => $item[$i]['title'],
+            'score'             => $item[$i]['score'],
+            'answer_count'      => $item[$i]['answer_count'],
+            'is_answered'       => $item[$i]['is_answered'],
+            'tags'              => $item[$i]['tags']
+          );
+        }
+
+        file_put_contents($json_file,json_encode($itemsArr));
+        unset($itemsArr);//release memory
+
+      } else {
+         // Do nothing
+      }  
+    }
+
+
+    public function readJSON() {
+
+      $json_string  = file_get_contents($GLOBALS['json_url_stackoverflow']);
+      $json_array   = json_decode($json_string, true);
+
+      foreach($json_array as $result){
+
+          $tags     = implode(', ', $result['tags']);
+          $answered = $result['is_answered'];
+          $yesno    = '';
+
+          if ($answered) {
+            $yesno = '<span class="answered"><b>Answered</b></span>';
+          } else {
+            $yesno = '<span class="unanswered"><b>Unanswered</b></span>';
+          }
+
+          $str = '<div class="feed-item">';
+          $str .= '<h4><a class="stackoverflow_url" href="'.$result['link'].'" target="_blank">'.$result['title'].'</a></h4>';
+          $str .= '<span class="stackoverflow_tags" style="margin-right:10px;">'.$tags.'</span>';
+          $str .= '<span class="stackoverflow_points" style="margin-right:10px;"><b>'.$result['score'].'</b> points</span>';
+          $str .= '<a style="color:gray;" href="#" class="stackoverflow_answers"><b>'.$result['answer_count'].'</b> answers </a>';
+          $str .= '<span style="display:block;" class="stackoverflow_answered" style="margin-right:10px;">'.$yesno.'</span>';
+          $str .= '</div>';
+
+          echo $str;
+      }
+    }
+
+
+
     public function getQuestions( $items ){
         $itemsArr     = array();
         $itemsArr     = json_decode($items, true);
@@ -343,7 +447,7 @@ class StackOverflow extends Helpers {
             $yesno = '<span class="unanswered"><b>Unanswered</b></span>';
           }
 
-          $str = '<div class="stackoverflow_shot">';
+          $str = '<div class="feed-item">';
           $str .= '<h4><a class="stackoverflow_url" href="'.$result['link'].'" target="_blank">'.$result['title'].'</a></h4>';
           $str .= '<span class="stackoverflow_tags" style="margin-right:10px;">'.$tags.'</span>';
           $str .= '<span class="stackoverflow_points" style="margin-right:10px;"><b>'.$result['score'].'</b> points</span>';
@@ -360,8 +464,6 @@ class StackOverflow extends Helpers {
 
 
 class DN {
-
-    // http://api.ihackernews.com/page?format=jsonp&callback=hnJSON
 
     private $ch;
 
@@ -389,7 +491,7 @@ class DN {
 
         foreach($itemsArr as $result){
 
-          $str = '<div style="margin-bottom:30px;">';
+          $str = '<div class="feed-item">';
           $str .= '<h4><a class="designernews_link" href="'.$result['url'].'" target="_blank">'.$result['title'].'</a></h4>';
           $str .= '<span class="designernews_points" style="margin-right:10px;"><b>'.$result['points'].'</b> </span>';
           $str .= '<span class="designernews_time" style="margin-right:10px;"><i>'.$result['time'].'</i> </span>';

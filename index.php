@@ -16,6 +16,40 @@
   $api_stackoverflow    = new StackOverflow();
 
   $xml_nettuts          = new Envato();
+
+  /* DESIGNERNEWS */
+  $stories =    $scraper_designernews->scrapeStories();
+                $scraper_designernews->writeJSON( $stories, 5);
+
+  /* HACKERNEWS */
+  $items =      $api_hackernews->getJSON();
+                $api_hackernews->writeJSON( $items, 5 );
+
+  /* REDDIT */
+  $items =      $api_redditdev->getJSON(5);
+                $api_redditdev->writeJSON( $items, 5 );
+  
+  /* GITHUB */
+  $repos =      $scraper_github->scrapeTrendingRepos('today');
+                $scraper_github->writeJSON( $repos, 5);
+
+  /* NETTUTS */
+  $articles =   $xml_nettuts->getXML('http://feeds.feedburner.com/nettuts-summary?fmt=xml'); 
+                $xml_nettuts->writeJSON( $articles, 5 );
+
+  /* STACKOVERFLOW */
+  $questions =  $api_stackoverflow->getJSON(5); 
+                $api_stackoverflow->writeJSON( $questions, 5 );
+
+  /* MEDIUM */
+  $articles =   $scraper_medium->scrapeArticles(5);
+                $scraper_medium->writeJSON( $articles, 5);
+
+  
+  /* DRIBBBLE */
+  $shots =      $api_dribbble->getJSON(6);
+                $api_dribbble->writeJSON( $shots, 6 );              
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,8 +108,8 @@
           </a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Dev</a></li>
-              <li><a href="#about">Design</a></li>
+              <li class="active"><a class="feed-loader" id="fl-dev" href="#">Dev</a></li>
+              <li><a class="feed-loader" id="fl-design" href="#about">Design</a></li>
               <li><a id="toggle-debug_time" class="debug-toggle" href="#">Debug</a></li>
               <!-- <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -110,143 +144,18 @@
 
       <?php /* Time Debugging */ $helpers->modifiedTimeDebugging(); ?>
       
+      <div id="feed"></div>
 
 
-
-      <!-- ROW 1
-      =================================================== -->
-       <div class="row flex-row">
-        <!-- *-====-* HACKERNEWS *-====-* -->
-        <div id="hackernews" class="feed span4">
-          <h2 class="hr">
-            <img class="icn-header" src="img/icon-hackernews.png" alt="Hacker News">
-            HackerNews
-          </h2>
-            <div class="feed-inner">
-              <?php 
-                $items =  $api_hackernews->getJSON();
-                          $api_hackernews->writeJSON( $items, 5 );
-                          $api_hackernews->readJSON();
-                          //$api_hackernews->getPosts( $items );
-              ?>
-            </div>
-        </div>
-        <!-- *-====-* DESIGNERNEWS *-====-* -->
-        <div id="designernews" class="feed span4">
-          <h2 class="hr">
-            <img class="icn-header" src="img/icon-designernews.png" alt="Designer News">
-            DesignerNews
-          </h2>
-            <div class="feed-inner">
-              <?php 
-                $stories =  $scraper_designernews->scrapeStories();
-                            //$scraper_siteinspire->displaySites( $stories, 5 );
-                            $scraper_designernews->writeJSON( $stories, 5);
-                            $scraper_designernews->readJSON();
-              ?>
-            </div>
-        </div>
-        <!-- *-====-* MEDIUM *-====-* -->
-        <div id="medium" class="feed span4">
-          <h2 class="hr">
-            <img class="icn-header" src="img/icon-medium.png" alt="Medium">
-            Medium
-          </h2>
-            <div class="feed-inner">              
-              <?php 
-                $articles = $scraper_medium->scrapeArticles();
-                            $scraper_medium->writeJSON( $articles, 5);
-                            $scraper_medium->readJSON();
-              ?>
-            </div>
-        </div>
-      </div>
+    </div> <!-- /container -->
 
 
-      <!-- ROW 2
-      =================================================== -->
-      <div class="row flex-row">
-        <!-- *-====-* NETTUTS *-====-* -->
-        <div id="nettuts" class="envato feed span4">
-          <h2 class="hr">
-            <img class="icn-header" src="img/icon-nettuts.png" alt="Nettuts">
-            Nettuts
-          </h2>
-            <div class="feed-inner">
-              <?php 
-                $articles = $xml_nettuts->getXML('http://feeds.feedburner.com/nettuts-summary?fmt=xml'); 
-                            //$xml_nettuts->displayFeed( $articles, 5 );
-                            $xml_nettuts->writeJSON( $articles, 5 );
-                            $xml_nettuts->readJSON();
-              ?>
-            </div>
-        </div>
-        <!-- *-====-* DRIBBBLE *-====-* -->
-         <div id="dribbble" class="feed span4">
-          <h2 class="hr">
-            <img class="icn-header" src="img/icon-dribbble-alt.png" alt="Dribbble">
-            Dribbble Shots
-          </h2>
-          <div class="feed-inner">
-            <div class="dribbble_shots">
-              <?php 
-                $shots =  $api_dribbble->getJSON(8);
-                          //$api_dribbble->getShots( $shots );
-                          $api_dribbble->writeJSON( $shots, 8 );
-                          $api_dribbble->readJSON();
-              ?>
-            </div>
-          </div>
-        </div>
-        <!-- *-====-* STACKOVERFLOW *-====-* -->
-        <div id="stackoverflow" class="feed span4">
-          <h2 class="hr">
-            <img class="icn-header" src="img/icon-stackoverflow.png" alt="Stack Overflow">
-            Stack Overflow
-          </h2>
-          <div class="feed-inner">
-            <?php 
-              $questions =  $api_stackoverflow->getJSON(5);
-                            $api_stackoverflow->getQuestions( $questions );
-            ?>
-          </div>
-        </div>
-
-      </div>
-
-
-
-      <!-- ROW 3
-      =================================================== -->
-      <div class="row flex-row">
-        <!-- *-====-* GITHUB *-====-* -->
-        <div id="github" class="feed span4">
-          <h2 class="hr">
-            <img class="icn-header" src="img/icon-github.png" alt="Github">
-            Github Repos
-          </h2>
-            <div class="feed-inner">
-              <?php 
-                $repos   =  $scraper_github->scrapeTrendingRepos('today');
-                            //$scraper_github->displayTrendingRepos($repos);
-                            $scraper_github->writeJSON( $repos, 5);
-                            $scraper_github->readJSON();
-              ?>
-            </div>
-        </div>
-
-      </div>
-
-
-
-
+<!--     <div class="container">
       <hr>
       <footer>
         <p>&copy; Alexander Zizzo 2013</p>
       </footer>
-
-    </div> <!-- /container -->
-   
+    </div> -->
 
   </body>
 </html>
