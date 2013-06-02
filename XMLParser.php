@@ -95,10 +95,10 @@ class Envato extends Helpers {
         foreach($json_array as $json_article) {
 
             $str = '<div class="feed-item">';
-			$str .= '<h4><a class="xmlfeed_link" href="'.$json_article['link'][0].'" target="_blank">'.$json_article['title'][0].'</a></h4>';
-			//$str .= '<p class="xmlfeed_desc">'.$json_article['desc'][0].'</p>';
-			$str .= '<span class="xmlfeed_date" style="margin-right:10px;"><i>'.$json_article['pubDate'][0].'</i></span>';
-			$str .= '</div>';
+						$str .= '<h4><a class="xmlfeed_link" href="'.$json_article['link'][0].'" target="_blank">'.$json_article['title'][0].'</a></h4>';
+						//$str .= '<p class="xmlfeed_desc">'.$json_article['desc'][0].'</p>';
+						$str .= '<span class="xmlfeed_date" style="margin-right:10px;"><i>'.substr(($json_article['pubDate'][0]), 0, 16).'</i></span>';
+						$str .= '</div>';
 
 			echo $str;
         }
