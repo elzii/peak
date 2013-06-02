@@ -54,10 +54,11 @@
   
   <!-- jQuery -->
   <script src="js/jquery-1.9.1.min.js"></script>
+  <!-- Vendor JS -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/midway.min.js"></script>
   <!-- App -->
   <script src="js/app.js"></script>
-  <!-- Vendor JS -->
-  <script src="js/midway.min.js"></script>
 
   <!-- Google Analytics -->
   <script>

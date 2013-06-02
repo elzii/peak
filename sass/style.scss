@@ -62,6 +62,21 @@ html {overflow-y:scroll;}
 	display:none;
 	position:relative;
 	padding-top:10px;
+
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+  	 	z-index: -1;
+			position: relative;
+	}
+
+  @media only screen and (max-width: 767px) {
+     z-index: -1;
+		position: relative;
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
+     z-index: -1;
+		position: relative;
+  }
 }
 
 
@@ -80,6 +95,18 @@ html {overflow-y:scroll;}
 	width:300px;height:40px;
 	float:right;
 	padding-top:10px;
+
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+  	 display:none !important;
+	}
+
+  @media only screen and (max-width: 767px) {
+     display:none !important;
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
+     display:none !important;
+  }
 
 }
 #progress-refresh {
@@ -100,6 +127,24 @@ html {overflow-y:scroll;}
 	display: -moz-box;
 	display: -webkit-flexbox;
 	margin-bottom:30px;
+
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+  	 display:block !important;
+  	 
+  	 .feed {width:100%;margin-bottom:30px;}
+	}
+
+  @media only screen and (max-width: 767px) {
+     display:block !important;
+     margin-bottom:30px;
+     .feed {width:100%;margin-bottom:30px;}
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
+     display:block !important;
+     margin-bottom:30px;
+     .feed {width:100%;margin-bottom:30px;}
+  }
 }
 
 .feed {
@@ -109,11 +154,13 @@ html {overflow-y:scroll;}
 	a,span,p {font-size:12px;}
 	@include border-radius(4px);
 	float:none !important;
-	width:100%;max-width:100%;
+	max-width:100%;
 	height:auto;
+
 }
 
 	.feed-inner {
+		width:100%;
 		display:table;
 		text-align:left;
 	}

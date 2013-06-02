@@ -422,6 +422,24 @@ html {
   position: relative;
   padding-top: 10px;
 }
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  #content {
+    z-index: -1;
+    position: relative;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #content {
+    z-index: -1;
+    position: relative;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  #content {
+    z-index: -1;
+    position: relative;
+  }
+}
 
 /* NAVBAR
 ================================================== */
@@ -438,6 +456,21 @@ html {
   float: right;
   padding-top: 10px;
 }
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  .navbar-progress-wrap {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .navbar-progress-wrap {
+    display: none !important;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .navbar-progress-wrap {
+    display: none !important;
+  }
+}
 
 #progress-refresh .bar {
   min-width: 23%;
@@ -451,6 +484,35 @@ html {
   display: -webkit-flexbox;
   margin-bottom: 30px;
 }
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  .flex-row {
+    display: block !important;
+  }
+  .flex-row .feed {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .flex-row {
+    display: block !important;
+    margin-bottom: 30px;
+  }
+  .flex-row .feed {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .flex-row {
+    display: block !important;
+    margin-bottom: 30px;
+  }
+  .flex-row .feed {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
 
 .feed {
   position: relative;
@@ -461,7 +523,6 @@ html {
   -o-border-radius: 4px;
   border-radius: 4px;
   float: none !important;
-  width: 100%;
   max-width: 100%;
   height: auto;
 }
@@ -473,6 +534,7 @@ html {
 }
 
 .feed-inner {
+  width: 100%;
   display: table;
   text-align: left;
 }
