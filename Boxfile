@@ -1,5 +1,7 @@
 web1: #component type & number
   name: shiela
+  shared_writable_dirs:
+    - /json
   php_extensions:
     - curl
     - dom
