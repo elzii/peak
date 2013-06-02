@@ -78,23 +78,25 @@
         function junkRemover(obj){
             $(this).remove();
         }
+        
+        //Envato Datefix
+        var env_date = $('.xmlfeed_date i');
+        function envatoDateFix(obj){
 
-        //XML Feed Date remove (mm-dd-yy)
-        var $dateStr = $('.xmlfeed_date i');
-        $dateStr.each(function(i){
+            obj.each(function(i){
+                var dateStr  = $(this).text();
+                var dateJunk = dateStr.substr(dateStr.length - 14);
 
-            var dateStr  = $(this).text();
-            var dateJunk = dateStr.substr(dateStr.length - 14);
+                dateStr = dateStr.replace(dateJunk, " ");
+                $(this).text(dateStr);
 
-            dateStr = dateStr.replace(dateJunk, " ");
-            $(this).text(dateStr);
-
-        });
+            });
+        } envatoDateFix(env_date);
 
         //Envato Junk Remove
         function envatoJunk(){
 
-            var env     = $('.envato'),
+            var env         = $('.envato'),
                 env_ad      = env.find('.xmlfeed_desc a:first-of-type'),
                 env_desc    = env.find('.xmlfeed_desc'),
                 env_ff      = env.find('.feedflare'),
@@ -146,6 +148,7 @@
                 //Hide loader again
                 PK.elems.loading.fadeOut(50);
                 PK.elems.feed.hide().delay(50).fadeIn(250);
+                PK.cleanup();
             });
 
         });
@@ -159,6 +162,7 @@
             //Hide loader
             PK.elems.loading.fadeOut(50);
             PK.elems.feed.fadeIn(250);
+            PK.cleanup();
         });
     }
 
@@ -182,6 +186,7 @@
         PK.loadDefaultFeed('feed-dev.php');
         PK.feedLoader(PK.elems.fl_dev, 'feed-dev.php');
         PK.feedLoader(PK.elems.fl_design, 'feed-design.php');
+
 
     });//close document ready
 

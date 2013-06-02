@@ -2,7 +2,7 @@
 
 $GLOBALS = array(
 	//Fetch Refresh Time
-	'refresh_time' 				=> 1.0,
+	'refresh_time' 				=> 3.0,
 	//'refresh_time' 				=> 0,
 	'debug_toggle' 				=> true,
 	//JSON Paths
