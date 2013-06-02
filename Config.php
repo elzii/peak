@@ -15,6 +15,7 @@ $GLOBALS = array(
 	'json_url_nettuts'				=> 'json/nettuts.json',
 	'json_url_medium'					=> 'json/medium.json',
 	'json_url_siteinspire'		=> 'json/siteinspire.json',
+	'json_url_eztv'						=> 'json/eztv.json',
 	//JSON URLs
 );
 

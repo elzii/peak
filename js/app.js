@@ -20,6 +20,7 @@
         PK.elems.feed       = $('#feed');
         PK.elems.fl_dev     = $('#fl-dev');
         PK.elems.fl_design  = $('#fl-design');
+        PK.elems.fl_media   = $('#fl-media');
         
     }
     
@@ -172,6 +173,7 @@
         PK.loadDefaultFeed('feed-dev.php');
         PK.feedLoader(PK.elems.fl_dev, 'feed-dev.php');
         PK.feedLoader(PK.elems.fl_design, 'feed-design.php');
+        PK.feedLoader(PK.elems.fl_media, 'feed-media.php');
 
     });//close document ready
 

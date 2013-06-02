@@ -9,7 +9,7 @@
   $scraper_medium       = new Medium();
   
   $api_hackernews       = new HackerNews();
-  $api_redditdev        = new RedditDev();
+  $api_redditdev        = new Reddit();
   $api_stackoverflow    = new StackOverflow();
 
   $xml_nettuts          = new Envato();

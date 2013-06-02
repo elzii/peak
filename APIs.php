@@ -116,7 +116,7 @@ class HackerNews extends Helpers {
 
 
 
-class RedditDev extends Helpers {
+class Reddit extends Helpers {
 
     // http://api.ihackernews.com/page?format=jsonp&callback=hnJSON
 
@@ -130,8 +130,8 @@ class RedditDev extends Helpers {
         curl_setopt($this->ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
     }
 
-    public function getJSON( $limit ) {
-      $url = "http://www.reddit.com/r/webdev+programming+javascript+jquery+web_design/.json?limit=".$limit;
+    public function getJSON( $subreddits, $limit ) {
+      $url = "http://www.reddit.com/r/".$subreddits."/.json?limit=".$limit;
         curl_setopt($this->ch, CURLOPT_URL, $url);
         $output = curl_exec($this->ch);
         return $output;

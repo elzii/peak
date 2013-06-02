@@ -11,7 +11,8 @@
   $scraper_medium       = new Medium();
   
   $api_hackernews       = new HackerNews();
-  $api_redditdev        = new RedditDev();
+  $api_redditdev        = new Reddit();
+  $api_redditdesign     = new Reddit();
   $api_dribbble         = new Dribbble();
   $api_stackoverflow    = new StackOverflow();
 
@@ -87,8 +88,9 @@
           </a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a class="feed-loader" id="fl-dev" href="#">Dev</a></li>
-              <li><a class="feed-loader" id="fl-design" href="#about">Design</a></li>
+              <li class="active"><a class="feed-loader" id="fl-dev" href="#dev">Dev</a></li>
+              <li><a class="feed-loader" id="fl-design" href="#design">Design</a></li>
+              <li><a class="feed-loader" id="fl-media" href="#media">Media</a></li>
               <li><a id="toggle-debug_time" class="debug-toggle" href="#">Debug</a></li>
               <!-- <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -129,9 +131,13 @@
       $hn_items =   $api_hackernews->getJSON();
                     $api_hackernews->writeJSON( $hn_items, 5 );
 
-      /* REDDIT */
-      $items =      $api_redditdev->getJSON(5);
+      /* REDDIT DEV */
+      $items =      $api_redditdev->getJSON('webdev+programming+javascript+jquery', 5);
                     $api_redditdev->writeJSON( $items, 5 );
+
+      /* REDDIT DESIGN */
+      $items_design = $api_redditdesign->getJSON('web_design+design+design_critiques', 5);
+                      $api_redditdesign->writeJSON( $items_design, 5 );
       
       /* GITHUB */
       $repos =      $scraper_github->scrapeTrendingRepos('today');

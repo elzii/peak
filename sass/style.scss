@@ -233,7 +233,7 @@ html {overflow-y:scroll;}
 
 /* Reddit
 ================================================== */
-#reddit {
+#reddit,#reddit-design {
 	@include feed-colors(#fdfdfd,#d3e5f9, true, #494949);
 
 	.reddit_subreddit {color:#f27657;}
@@ -300,7 +300,7 @@ html {overflow-y:scroll;}
 			display:block;
 			width:100%;
 			border:1px solid;
-			border:1px solid darken(#fff0f5, 5);
+			border:1px solid darken(#f3f3f3, 5);
 		}
 	}
 }
@@ -338,6 +338,17 @@ html {overflow-y:scroll;}
 }
 
 
+/* EZTV
+================================================== */
+#eztv {
+	@include feed-colors(#f5fcfc,#000000);
+
+	.eztv_size {}
+	.eztv_magnet {color:#f27657;}
+	.eztv_tpb    {color:#46a546;}
+}
+
+
 
 /* XML Feeds
 ================================================== */
@@ -365,59 +376,11 @@ a.debug-toggle {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* TEST PRE
+================================================== */
+pre#test {
+	whitespace: pre-line !important;
+}
 
 
 

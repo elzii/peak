@@ -9,7 +9,7 @@
   $scraper_siteinspire  = new SiteInspire();
   
   $api_dribbble         = new Dribbble();
-
+  $api_redditdesign     = new Reddit();
 
 ?>
 <!-- ROW 1
@@ -43,7 +43,22 @@
       </div>
     </div>
   </div>
+  <!-- *-====-* REDDIT DESIGN *-====-* -->
+  <div id="reddit-design" class="feed span4">
+    <h2 class="hr">
+      <img class="icn-header" src="img/icon-reddit.png" alt="Hacker News">
+      Design Subreddits
+    </h2>
+      <div class="feed-inner">
+        <?php $api_redditdesign->readJSON(); ?>
+      </div>
+  </div>
 
+</div>
+
+<!-- ROW 2
+=================================================== -->
+<div class="row flex-row">
   <!-- *-====-* SITEINSPIRE *-====-* -->
    <div id="siteinspire" class="feed span4">
     <h2 class="hr">
@@ -56,7 +71,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
 
