@@ -462,47 +462,4 @@ class StackOverflow extends Helpers {
 
 
 
-
-class DN {
-
-    private $ch;
-
-    public function __construct() {
-        $this->ch = curl_init();
-        curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($this->ch, CURLOPT_HTTPHEADER, array('Accept: application/json'));
-        curl_setopt($this->ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
-    }
-
-    public function getJSON() {
-      $url = "json/designernews.json";
-        curl_setopt($this->ch, CURLOPT_URL, $url);
-        $output = curl_exec($this->ch);
-        return $output;
-    }
-
-
-    public function getPosts( $items ){
-        $itemsArr         = array();
-        $itemsArr         = json_decode($items, true);
-
-        print_r($itemsArr);
-
-        foreach($itemsArr as $result){
-
-          $str = '<div class="feed-item">';
-          $str .= '<h4><a class="designernews_link" href="'.$result['url'].'" target="_blank">'.$result['title'].'</a></h4>';
-          $str .= '<span class="designernews_points" style="margin-right:10px;"><b>'.$result['points'].'</b> </span>';
-          $str .= '<span class="designernews_time" style="margin-right:10px;"><i>'.$result['time'].'</i> </span>';
-          $str .= '<a style="color:gray;" href="#" class="designernews_comments"><b>'.$result['time'].'</b> </a>';
-          $str .= '</div>';
-
-          echo $str;
-        }
-    }
-}
-
-
-
 ?>

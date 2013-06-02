@@ -15,40 +15,7 @@
   $api_dribbble         = new Dribbble();
   $api_stackoverflow    = new StackOverflow();
 
-  $xml_nettuts          = new Envato();
-
-  /* DESIGNERNEWS */
-  $stories =    $scraper_designernews->scrapeStories();
-                $scraper_designernews->writeJSON( $stories, 5);
-
-  /* HACKERNEWS */
-  $items =      $api_hackernews->getJSON();
-                $api_hackernews->writeJSON( $items, 5 );
-
-  /* REDDIT */
-  $items =      $api_redditdev->getJSON(5);
-                $api_redditdev->writeJSON( $items, 5 );
-  
-  /* GITHUB */
-  $repos =      $scraper_github->scrapeTrendingRepos('today');
-                $scraper_github->writeJSON( $repos, 5);
-
-  /* NETTUTS */
-  $articles =   $xml_nettuts->getXML('http://feeds.feedburner.com/nettuts-summary?fmt=xml'); 
-                $xml_nettuts->writeJSON( $articles, 5 );
-
-  /* STACKOVERFLOW */
-  $questions =  $api_stackoverflow->getJSON(5); 
-                $api_stackoverflow->writeJSON( $questions, 5 );
-
-  /* MEDIUM */
-  $articles =   $scraper_medium->scrapeArticles(5);
-                $scraper_medium->writeJSON( $articles, 5);
-
-  
-  /* DRIBBBLE */
-  $shots =      $api_dribbble->getJSON(6);
-                $api_dribbble->writeJSON( $shots, 6 );              
+  $xml_nettuts          = new Envato();          
 
 ?>
 <!DOCTYPE html>
@@ -143,7 +110,44 @@
 
 
       <?php /* Time Debugging */ $helpers->modifiedTimeDebugging(); ?>
+        
+      <?php 
+
+      /* HACKERNEWS */
+      $hn_items =   $api_hackernews->getJSON();
+                    $api_hackernews->writeJSON( $hn_items, 5 );
+
+      /* REDDIT */
+      $items =      $api_redditdev->getJSON(5);
+                    $api_redditdev->writeJSON( $items, 5 );
       
+      /* GITHUB */
+      $repos =      $scraper_github->scrapeTrendingRepos('today');
+                    $scraper_github->writeJSON( $repos, 5);
+
+      /* NETTUTS */
+      $nt_articles =  $xml_nettuts->getXML('http://feeds.feedburner.com/nettuts-summary?fmt=xml'); 
+                      $xml_nettuts->writeJSON( $nt_articles, 5 );
+
+      /* STACKOVERFLOW */
+      $questions =  $api_stackoverflow->getJSON(5); 
+                    $api_stackoverflow->writeJSON( $questions, 5 );
+
+      /* MEDIUM */
+      $articles =   $scraper_medium->scrapeArticles(5);
+                    $scraper_medium->writeJSON( $articles, 5);
+
+      /* DRIBBBLE */
+      $shots =      $api_dribbble->getJSON(6);
+                    $api_dribbble->writeJSON( $shots, 6 );    
+
+      /* DESIGNERNEWS */
+      $dn_stories = $scraper_designernews->scrapeStories(5);
+                    $scraper_designernews->writeJSON( $dn_stories, 5);
+
+    ?>
+
+
       <div id="feed"></div>
 
 

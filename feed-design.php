@@ -6,11 +6,8 @@
   $helpers              = new Helpers();
 
   $scraper_designernews = new DesignerNews();
-  $scraper_siteinspire  = new SiteInspire();
   
   $api_dribbble         = new Dribbble();
-
-  $xml_nettuts          = new Envato();
 
 
 ?>
@@ -26,9 +23,11 @@
       <div class="feed-inner">
 
         <?php 
-        $stories =    $scraper_designernews->scrapeStories();
-                      $scraper_designernews->displayStories($stories, 5);
-               ?>
+          // $stories =    $scraper_designernews->scrapeStories();
+          //               $scraper_designernews->displayStories($stories, 5);
+
+          $scraper_designernews->readJSON();
+        ?>
       </div>
   </div>
   <!-- *-====-* DRIBBBLE *-====-* -->

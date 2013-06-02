@@ -3,7 +3,7 @@
 $GLOBALS = array(
 	//Fetch Refresh Time
 	'refresh_time' 				=> 3.0,
-	//'refresh_time' 				=> 0,
+	// 'refresh_time' 				=> 0,
 	'debug_toggle' 				=> true,
 	//JSON Paths
 	'json_url_hackernews'			=> 'json/hackernews.json',
