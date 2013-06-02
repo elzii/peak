@@ -12,7 +12,7 @@ class Helpers extends Config {
 		$time_now                 = time();
 		$time_modified 		        = filemtime($path);
 		$time_difference          = abs($time_modified - $time_now)/60/60;
-    $time_difference_rounded  = round($time_difference, 1);
+    $time_difference_rounded  = round($time_difference, 2);
     $time_elapsed_percent     = (($time_difference_rounded / $refresh_time) * 100);
 
     return array(
@@ -58,7 +58,7 @@ class Helpers extends Config {
 		$time = $this->timeDifference();
     $time_difference = $time['time_difference_rounded'];
 
-		if ($time_difference >= $GLOBALS['refresh_time'] || $time_difference == 0.1) {
+		if ($time_difference >= $GLOBALS['refresh_time'] && $time_difference >= 0.025) {
 			return false;
 		} else {
 			return true;

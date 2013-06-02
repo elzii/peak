@@ -1,0 +1,54 @@
+body
+  background: #12A5F4
+  padding: 100px
+
+.skype
+  background: #fff
+  width: 200px
+  height: 200px
+  position: relative
+  margin: 0 auto
+  border-radius: 150px
+  border: solid 15px #fff
+  animation: play 1.5s ease infinite
+  &:before
+    background: #fff
+    content: ''
+    width: 233px
+    height: 104px
+    position: absolute
+    top: 13px
+    left: 16px
+    border-radius: 100px
+    border: solid 15px #fff
+    z-index: 99998
+    transform: rotate(-45deg)
+    transform-origin: bottom
+  &:after
+    background: white url('http://s18.postimg.org/j3ro99lzd/icon.png')
+    background-size: 100% 100%
+    content: ''
+    width: 200px
+    height: 200px
+    margin: 0 auto
+    position: absolute
+    border-radius: 150px
+    z-index: 99999 !important
+  &:hover
+    animation: none
+    transform: scale(1.2)
+    transition: .5s
+
+@keyframes play
+  0%
+    transform: scale(1)
+  15%
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.2)
+  25%
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.2), 0 0 0 40px rgba(255, 255, 255, 0.2)
+  30%
+    transform: scale(1.2)
+  50%
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.2), 0 0 0 40px rgba(255, 255, 255, 0.2), 0 0 0 60px rgba(255, 255, 255, 0.2)
+  80%
+    transform: scale(1)

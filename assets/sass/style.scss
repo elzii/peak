@@ -1,0 +1,485 @@
+/* style.scss */
+
+@import "normalize";
+@import "compass/css3";
+
+* { 
+	//-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; 
+	margin:0;padding:0;
+}
+
+/* FONTS
+================================================== */
+@font-face {
+  font-family: "pictos";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/pictos/pictos.eot");
+  src: url("../fonts/pictos/pictos.eot?#iefix") format("embedded-opentype"), url("../fonts/pictos/pictos.woff") format("woff"), url("../fonts/pictos/pictos.ttf") format("truetype"), url("../fonts/pictos/pictos.svg#pictos") format("svg");
+}
+
+/* SASS VARIABLES	 
+================================================== */
+
+	
+/* INHERITANCE */
+%pictos {
+	font-family:"pictos";
+}
+
+
+/* BODY / DEFAULTS
+================================================== */
+body {
+	margin:0px;padding:0px;
+
+	a {color:#596f77;}
+}
+* {
+	margin:0;padding:0;
+    -webkit-box-sizing: border-box; 
+       -moz-box-sizing: border-box; 
+        -ms-box-sizing: border-box;
+            box-sizing: border-box; 
+	//*behavior: url(assets/box-sizing.htc); //conditional for ie
+
+	&:after, &:before {
+		-webkit-box-sizing: border-box;
+	       -moz-box-sizing: border-box;
+	        -ms-box-sizing: border-box;
+	            box-sizing: border-box;
+	}
+}
+html {overflow-y:scroll;}
+
+
+/* IMPORTS
+================================================== */
+@import "icons";
+
+
+/* SASS TESTS
+================================================== */
+
+
+/* CONTENT
+================================================== */
+.loading {
+	position:absolute;top:50%;left:50%;
+	margin:-10px 0 0 -110px;
+	width:220px;height:20px;
+	background:url('../img/ajax-loader.gif');
+}
+#content {
+	display:none;
+	position:relative;
+	padding-top:10px;
+
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+  	 	z-index: -1;
+			position: relative;
+	}
+
+  @media only screen and (max-width: 767px) {
+     z-index: -1;
+		position: relative;
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
+     z-index: -1;
+		position: relative;
+  }
+}
+
+
+
+
+/* NAVBAR
+================================================== */
+.navbar {
+	height:40px;max-height:40px;
+
+}
+
+/* PROGRESS REFRESH
+================================================== */
+.navbar-progress-wrap {
+	width:300px;height:40px;
+	float:right;
+	padding-top:10px;
+
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+  	 display:none !important;
+	}
+
+  @media only screen and (max-width: 767px) {
+     display:none !important;
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
+     display:none !important;
+  }
+
+}
+#progress-refresh {
+	
+	.bar {min-width:25%;}
+}
+
+
+
+
+
+
+
+/* FEED
+================================================== */
+.flex-row {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -webkit-flexbox;
+	margin-bottom:30px;
+
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+  	 display:block !important;
+  	 
+  	 .feed {width:100%;margin-bottom:30px;}
+	}
+
+  @media only screen and (max-width: 767px) {
+     display:block !important;
+     margin-bottom:30px;
+     .feed {width:100%;margin-bottom:30px;}
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
+     display:block !important;
+     margin-bottom:30px;
+     .feed {width:100%;margin-bottom:30px;}
+  }
+}
+
+.feed {
+	position:relative;
+	display:block;
+	h4 a {font-size:inherit;}
+	a,span,p {font-size:12px;}
+	// @include border-radius(4px);
+	float:none !important;
+	max-width:100%;
+	height:auto;
+
+}
+
+	.feed-inner {
+		width:100%;
+		display:table;
+		text-align:left;
+	}
+
+	.feed-item {
+		padding:10px;
+
+		&:last-of-type {margin-bottom:0;}
+	}
+
+
+	/* FEED TYPOGRAPHY
+	================================================== */
+	h2.hr {
+		position:relative;
+		height: 41px; //+1px for box-sizing
+		line-height: 40px;
+		padding:0;
+		margin:0;
+		font-size:20px;
+		// @include border-radius(4px 4px 0 0);
+		width:100%;
+		display:block;
+	}
+
+		img.icn-header {
+			float:none;
+			line-height:40px;
+			margin:0 10px 0 5px;padding:0;
+			position:relative;top:0px;
+			float:left;
+			// @include border-radius(4px 0 0 0);
+
+		}
+
+/* FEED MIXIN
+================================================== */
+@mixin feed-colors($color1:#f7f7f7, $color2:#f3f3f3, $color-alt-bool:false, $color-alt:#2a2a2a) {
+
+	background:$color1;border:1px solid darken($color1, 5);
+
+	@if $color-alt-bool == true {
+		h2 {background: $color2;color:$color-alt;border-bottom:1px solid darken($color2, 5);}
+		a {color:$color-alt;}
+	} @else {
+		h2 {background: $color2;color:$color1;border-bottom:1px solid darken($color2, 5);}
+		a {color:$color2;}
+	}
+
+	.feed-item {
+		border-bottom:1px solid darken($color1, 5);
+		&:last-of-type {border-bottom:none;}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Hacker News
+================================================== */
+#hackernews {
+	@include feed-colors(#fdf2ea,#f28736);
+}
+
+
+/* Designer News
+================================================== */
+#designernews {
+	@include feed-colors(#f1f6fd,#164fa5);
+}
+
+/* Reddit
+================================================== */
+#reddit,#reddit-design {
+	@include feed-colors(#fdfdfd,#d3e5f9, true, #494949);
+
+	.reddit_subreddit {color:#f27657;}
+}
+
+/* Github
+================================================== */	
+#github {
+	@include feed-colors(#f7f7f7,#f3f3f3, true, #2a2a2a);
+	
+	p {margin-bottom:3px;}
+}
+
+/* Nettuts
+================================================== */
+#nettuts {
+	@include feed-colors(#f1fefc,#4aa699);	
+}
+
+/* The Verge
+================================================== */
+#theverge {
+	@include feed-colors(#fafbff,#000000);	
+}
+
+/* Vice
+================================================== */
+#vice {
+	@include feed-colors(#fafafa,#000000);	
+}
+
+
+
+/* Stack Overflow
+================================================== */
+#stackoverflow {
+	@include feed-colors(#fff6ec,#444444);
+
+		.answered   {
+			@extend %pictos;
+			color:#46a546;
+			margin-right:7px;
+			font-size:20px;
+		}
+		.unanswered {
+			@extend %pictos;
+			color:#9d261d;
+			margin-right:7px;
+			font-size:20px;
+		}
+
+	.stackoverflow_tags {
+		color:#6baec2;
+	}
+}
+
+
+/* Medium
+================================================== */
+#medium {
+	@include feed-colors(#f4f4f2,#333332);
+
+
+	.medium_avatar {
+		width:44px;height:44px;float:right;margin:0 7px 10px 20px;
+		@include border-radius(22px);
+		border:1px solid #2a2a2a;
+	}
+}
+
+
+/* EZTV
+================================================== */
+#eztv {
+	@include feed-colors(#f5fcfc,#000000);
+
+	.eztv_size {}
+	.eztv_magnet {color:#f27657;}
+	.eztv_tpb    {color:#46a546;}
+}
+
+
+/* TPB
+================================================== */
+#tpb {
+	@include feed-colors(#fff9f5,#211f1e);
+	.tpb_url  {
+		text-align:justify;
+		text-justify:inter-word;
+	}
+	.tpb_size {}
+	.tpb_magnet {color:#f27657;}
+	.tpb_size    {color:#2a2a2a;}
+
+	h4 {width:360px !important;max-width:360px !important;}
+
+	h4 a {word-wrap: break-word;}
+}
+
+ 
+
+
+
+
+
+
+
+/* Thumb
+================================================== */
+.thumb {
+	float:left;
+	width:48%;
+	//margin-right:15px;
+	padding:15px 0 0 15px;
+
+	&:nth-child(2n) {padding-right:0px;}
+	&:last-child {padding-bottom:15px;}
+	
+	img {
+		display:block;
+		width:100%;
+		opacity:.95;
+
+
+		&:hover {
+			opacity:1;
+		}
+	}
+}
+
+		/* Dribbble
+		================================================== */
+		#dribbble {
+			@include feed-colors(#fff0f5,#dc3f72);		
+
+			clear:both;
+			&:after {position:absolute;content:'';width:0;height:0;clear:both;}
+			
+			.thumb img {border:1px solid darken(#fff0f5, 10);}
+		}
+
+
+		/* Site Inspire
+		================================================== */
+		#siteinspire {
+			@include feed-colors(#f3f3f3,#464e54);		
+
+			clear:both;
+			&:after {position:absolute;content:'';width:0;height:0;clear:both;}
+			
+			.thumb img {border:1px solid darken(#f3f3f3, 10);}
+		}
+
+
+		/* GO GO GST
+		================================================== */
+		#gogogst {
+			@include feed-colors(#faf8f8,#080808);		
+
+			clear:both;
+			&:after {position:absolute;content:'';width:0;height:0;clear:both;}
+			
+			.thumb img {border:1px solid darken(#faf8f8, 10);}
+			
+		}
+
+
+		/* AWWWARDS
+		================================================== */
+		#awwwards {
+			@include feed-colors(#fdfdfd,#70cdd3);		
+
+			clear:both;
+			&:after {position:absolute;content:'';width:0;height:0;clear:both;}
+			
+			.thumb img {
+				border:1px solid darken(#fdfdfd, 10);
+			}
+			
+		}
+
+
+
+
+
+
+
+
+/* XML Feeds
+================================================== */
+.xmlfeed_desc a {color:gray;font-weight:600;}
+
+	/* ENVATO
+	================================================== */
+	.feedflare {display:none;}
+
+
+
+
+/* DEBUG TOGGLES/STYLES
+================================================== */
+a.debug-toggle {
+	color:#d48749 !important; 
+
+	&:hover {color:lighten(#d48749,15) !important;}
+}
+
+
+
+
+
+
+
+
+/* TEST PRE
+================================================== */
+pre#test {
+	whitespace: pre-line !important;
+}
+
+
+
+

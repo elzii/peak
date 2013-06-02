@@ -21,7 +21,7 @@
   <!-- *-====-* HACKERNEWS *-====-* -->
   <div id="hackernews" class="feed span4">
     <h2 class="hr">
-      <img class="icn-header" src="img/icon-hackernews.png" alt="Hacker News">
+      <img class="icn-header" src="assets/img/icon-hackernews.png" alt="Hacker News">
       HackerNews
     </h2>
       <div class="feed-inner">
@@ -31,7 +31,7 @@
   <!-- *-====-* REDDIT *-====-* -->
   <div id="reddit" class="feed span4">
     <h2 class="hr">
-      <img class="icn-header" src="img/icon-reddit.png" alt="Hacker News">
+      <img class="icn-header" src="assets/img/icon-reddit.png" alt="Hacker News">
       Dev Subreddits
     </h2>
       <div class="feed-inner">
@@ -41,7 +41,7 @@
   <!-- *-====-* GITHUB *-====-* -->
   <div id="github" class="feed span4">
     <h2 class="hr">
-      <img class="icn-header" src="img/icon-github.png" alt="Github">
+      <img class="icn-header" src="assets/img/icon-github.png" alt="Github">
       Github Repos
     </h2>
       <div class="feed-inner">
@@ -58,7 +58,7 @@
   <!-- *-====-* NETTUTS *-====-* -->
   <div id="nettuts" class="envato feed span4">
     <h2 class="hr">
-      <img class="icn-header" src="img/icon-nettuts.png" alt="Nettuts">
+      <img class="icn-header" src="assets/img/icon-nettuts.png" alt="Nettuts">
       Nettuts
     </h2>
       <div class="feed-inner">
@@ -68,7 +68,7 @@
   <!-- *-====-* STACKOVERFLOW *-====-* -->
   <div id="stackoverflow" class="feed span4">
     <h2 class="hr">
-      <img class="icn-header" src="img/icon-stackoverflow.png" alt="Stack Overflow">
+      <img class="icn-header" src="assets/img/icon-stackoverflow.png" alt="Stack Overflow">
       Stack Overflow
     </h2>
     <div class="feed-inner">
@@ -79,7 +79,7 @@
   <!-- *-====-* MEDIUM *-====-* -->
   <div id="medium" class="feed span4">
     <h2 class="hr">
-      <img class="icn-header" src="img/icon-medium.png" alt="Medium">
+      <img class="icn-header" src="assets/img/icon-medium.png" alt="Medium">
       Medium
     </h2>
       <div class="feed-inner">              

@@ -29,10 +29,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/oticons.css" rel="stylesheet">
+    <!-- styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/oticons.css" rel="stylesheet">
 
     <style type="text/css">
       body {
@@ -40,7 +40,7 @@
         padding-bottom: 40px;
       }
     </style>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -55,12 +55,12 @@
                                    <link rel="shortcut icon" href="img/favicon.png">
   
   <!-- jQuery -->
-  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="assets/js/jquery-1.9.1.min.js"></script>
   <!-- Vendor JS -->
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/midway.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/midway.min.js"></script>
   <!-- App -->
-  <script src="js/app.js"></script>
+  <script src="assets/js/app.js"></script>
 
   <!-- Google Analytics -->
   <script>
@@ -91,7 +91,7 @@
             <ul class="nav">
               <li class="active"><a class="feed-loader" id="fl-dev" href="#dev">Dev</a></li>
               <li><a class="feed-loader" id="fl-design" href="#design">Design</a></li>
-              <li><a class="feed-loader" id="fl-media" href="#media">Media</a></li>
+              <li><a class="feed-loader" id="fl-media" href="#media">Media / Tech</a></li>
               <li><a id="toggle-debug_time" class="debug-toggle" href="#">Debug</a></li>
               <!-- <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -135,10 +135,6 @@
       /* REDDIT DEV */
       $items =      $api_redditdev->getJSON('webdev+programming+javascript+jquery', 5);
                     $api_redditdev->writeJSON( $GLOBALS['json_url_reddit'], $items, 5 );
-
-      /* REDDIT DESIGN */
-      $items_design = $api_redditdesign->getJSON('web_design+design+design_critiques', 5);
-                      $api_redditdesign->writeJSON( $GLOBALS['json_url_redditdesign'], $items_design, 5 );
       
       /* GITHUB */
       $repos =      $scraper_github->scrapeTrendingRepos('today');
@@ -156,17 +152,6 @@
       $articles =   $scraper_medium->scrapeArticles(5);
                     $scraper_medium->writeJSON( $articles, 5);
 
-      /* DRIBBBLE */
-      $shots =      $api_dribbble->getJSON(6);
-                    $api_dribbble->writeJSON( $shots, 6 );    
-
-      /* DESIGNERNEWS */
-      $dn_stories = $scraper_designernews->scrapeStories(5);
-                    $scraper_designernews->writeJSON( $dn_stories, 5);
-
-      /* SITEINSPIRE */
-      $si_thumbs  = $scraper_siteinspire->scrapeSites();
-                    $scraper_siteinspire->writeJSON( $si_thumbs, 6 );
 
     ?>
 
