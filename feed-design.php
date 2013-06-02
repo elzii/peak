@@ -50,7 +50,7 @@
       Design Subreddits
     </h2>
       <div class="feed-inner">
-        <?php $api_redditdesign->readJSON(); ?>
+        <?php $api_redditdesign->readJSON($GLOBALS['json_url_redditdesign']); ?>
       </div>
   </div>
 

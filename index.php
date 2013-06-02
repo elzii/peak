@@ -2,6 +2,7 @@
   require_once 'Scrapers.php'; 
   require_once 'APIs.php';
   require_once 'XMLParser.php';
+  require_once 'Config.php';
 
   $helpers              = new Helpers();
 
@@ -133,11 +134,11 @@
 
       /* REDDIT DEV */
       $items =      $api_redditdev->getJSON('webdev+programming+javascript+jquery', 5);
-                    $api_redditdev->writeJSON( $items, 5 );
+                    $api_redditdev->writeJSON( $GLOBALS['json_url_reddit'], $items, 5 );
 
       /* REDDIT DESIGN */
       $items_design = $api_redditdesign->getJSON('web_design+design+design_critiques', 5);
-                      $api_redditdesign->writeJSON( $items_design, 5 );
+                      $api_redditdesign->writeJSON( $GLOBALS['json_url_redditdesign'], $items_design, 5 );
       
       /* GITHUB */
       $repos =      $scraper_github->scrapeTrendingRepos('today');

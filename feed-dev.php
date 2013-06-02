@@ -35,7 +35,7 @@
       Dev Subreddits
     </h2>
       <div class="feed-inner">
-        <?php $api_redditdev->readJSON(); ?>
+        <?php $api_redditdev->readJSON($GLOBALS['json_url_reddit']); ?>
       </div>
   </div>
   <!-- *-====-* GITHUB *-====-* -->

@@ -137,11 +137,11 @@ class Reddit extends Helpers {
         return $output;
     }
 
-    public function writeJSON( $items, $limit ) {
+    public function writeJSON( $jsonfile, $items, $limit ) {
       $modified_time  = $this->modifiedTime();
 
       // if (!$modified_time) {
-        $json_file  = $GLOBALS['json_url_reddit'];
+        $json_file  = $jsonfile;
         $file       = file_get_contents($json_file);
         unset($file); //prevent memory leaks for large json.
 
@@ -173,9 +173,9 @@ class Reddit extends Helpers {
     }
 
 
-    public function readJSON() {
+    public function readJSON( $jsonfile ) {
 
-      $json_array  = file_get_contents($GLOBALS['json_url_reddit']);
+      $json_array  = file_get_contents($jsonfile);
       $php_array   = json_decode($json_array, true);
 
       foreach($php_array as $result){
