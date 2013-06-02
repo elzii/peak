@@ -6,6 +6,7 @@
   $helpers              = new Helpers();
 
   $scraper_designernews = new DesignerNews();
+  $scraper_siteinspire  = new SiteInspire();
   
   $api_dribbble         = new Dribbble();
 
@@ -41,6 +42,21 @@
         <?php $api_dribbble->readJSON(); ?>
       </div>
     </div>
+  </div>
+
+  <!-- *-====-* SITEINSPIRE *-====-* -->
+   <div id="siteinspire" class="feed span4">
+    <h2 class="hr">
+      <img class="icn-header" src="img/icon-siteinspire.png" alt="SiteInspire">
+      SiteInspire Sites
+    </h2>
+    <div class="feed-inner">
+      <div class="siteinspire_thumbs">
+        <?php $scraper_siteinspire->readJSON(); ?>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 

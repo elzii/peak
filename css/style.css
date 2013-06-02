@@ -673,6 +673,49 @@ img.icn-header {
   border: 1px solid #ffd7e4;
 }
 
+/* Dribbble
+================================================== */
+#siteinspire {
+  background: #f3f3f3;
+  border: 1px solid #e6e6e6;
+  clear: both;
+}
+#siteinspire h2 {
+  background: #464e54;
+  color: #f3f3f3;
+  border-bottom: 1px solid #3a4146;
+}
+#siteinspire a {
+  color: #464e54;
+}
+#siteinspire .feed-item {
+  border-bottom: 1px solid #e6e6e6;
+}
+#siteinspire .feed-item:last-of-type {
+  border-bottom: none;
+}
+#siteinspire:after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  clear: both;
+}
+#siteinspire .siteinspire_thumb {
+  float: left;
+  width: 48%;
+  padding: 15px 0 0 15px;
+}
+#siteinspire .siteinspire_thumb:nth-child(2n) {
+  padding-right: 0px;
+}
+#siteinspire .siteinspire_thumb img {
+  display: block;
+  width: 100%;
+  border: 1px solid;
+  border: 1px solid #ffd7e4;
+}
+
 /* Stack Overflow
 ================================================== */
 #stackoverflow {

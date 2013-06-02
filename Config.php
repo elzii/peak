@@ -2,8 +2,8 @@
 
 $GLOBALS = array(
 	//Fetch Refresh Time
-	'refresh_time' 				=> 3.0,
-	// 'refresh_time' 				=> 0,
+	'refresh_time' 				=> 2.0,
+	// 'refresh_time' 				=> 0.1,
 	'debug_toggle' 				=> true,
 	//JSON Paths
 	'json_url_hackernews'			=> 'json/hackernews.json',
@@ -14,6 +14,7 @@ $GLOBALS = array(
 	'json_url_github'					=> 'json/github.json',
 	'json_url_nettuts'				=> 'json/nettuts.json',
 	'json_url_medium'					=> 'json/medium.json',
+	'json_url_siteinspire'		=> 'json/siteinspire.json',
 	//JSON URLs
 );
 

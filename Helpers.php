@@ -58,7 +58,7 @@ class Helpers extends Config {
 		$time = $this->timeDifference();
     $time_difference = $time['time_difference_rounded'];
 
-		if ($time_difference >= $GLOBALS['refresh_time']) {
+		if ($time_difference >= $GLOBALS['refresh_time'] || $time_difference == 0.1) {
 			return false;
 		} else {
 			return true;
