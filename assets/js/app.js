@@ -18,6 +18,7 @@
         PK.elems.loading    = $('.loading');
         PK.elems.content    = $('#content');
         PK.elems.feed       = $('#feed');
+        PK.elems.fl_all     = $('#fl-all');
         PK.elems.fl_dev     = $('#fl-dev');
         PK.elems.fl_design  = $('#fl-design');
         PK.elems.fl_media   = $('#fl-media');
@@ -170,7 +171,8 @@
     $(document).ready(function(){
         
         PK.init();
-        PK.loadDefaultFeed('feed-dev.php');
+        PK.loadDefaultFeed('feed-all.php');
+        PK.feedLoader(PK.elems.fl_all, 'feed-all.php');
         PK.feedLoader(PK.elems.fl_dev, 'feed-dev.php');
         PK.feedLoader(PK.elems.fl_design, 'feed-design.php');
         PK.feedLoader(PK.elems.fl_media, 'feed-media.php');
