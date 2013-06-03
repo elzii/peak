@@ -7,6 +7,7 @@
 
   $scraper_github       = new Github();
   $scraper_medium       = new Medium();
+  $scraper_svbtle       = new Svbtle();
   
   $api_hackernews       = new HackerNews();
   $api_redditdev        = new Reddit();
@@ -66,14 +67,24 @@
       </div>
   </div>
   <!-- *-====-* STACKOVERFLOW *-====-* -->
-  <div id="stackoverflow" class="feed span4">
+  <!-- <div id="stackoverflow" class="feed span4">
     <h2 class="hr">
       <img class="icn-header" src="assets/img/icon-stackoverflow.png" alt="Stack Overflow">
       Stack Overflow
     </h2>
     <div class="feed-inner">
-      <?php $api_stackoverflow->readJSON(); ?>
+      <?php //$api_stackoverflow->readJSON(); ?>
     </div>
+  </div> -->
+  <!-- *-====-* SVBTLE *-====-* -->
+  <div id="svbtle" class="feed span4">
+    <h2 class="hr">
+      <img class="icn-header" src="assets/img/icon-svbtle.png" alt="Medium">
+      Svbtle
+    </h2>
+      <div class="feed-inner">              
+        <?php $scraper_svbtle->readJSON(); ?>
+      </div>
   </div>
 
   <!-- *-====-* MEDIUM *-====-* -->

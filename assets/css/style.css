@@ -821,6 +821,27 @@ img.icn-header {
   border: 1px solid #2a2a2a;
 }
 
+/* Svbtle
+================================================== */
+#svbtle {
+  background: #fefefe;
+  border: 1px solid #f1f1f1;
+}
+#svbtle h2 {
+  background: #010101;
+  color: #fefefe;
+  border-bottom: 1px solid black;
+}
+#svbtle a {
+  color: #010101;
+}
+#svbtle .feed-item {
+  border-bottom: 1px solid #f1f1f1;
+}
+#svbtle .feed-item:last-of-type {
+  border-bottom: none;
+}
+
 /* EZTV
 ================================================== */
 #eztv {

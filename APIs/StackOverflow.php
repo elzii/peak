@@ -2,8 +2,6 @@
 
 class StackOverflow extends Helpers {
 
-    // http://api.ihackernews.com/page?format=jsonp&callback=hnJSON
-
     private $ch;
 
     public function __construct() {
@@ -17,12 +15,19 @@ class StackOverflow extends Helpers {
     }
 
     public function getJSON( $limit ) {
-      if (is_null($limit)) $limit = 5;
+      $modified_time  = $this->modifiedTime();
 
-      $url = "https://api.stackexchange.com/2.1/questions?pagesize=".$limit."&order=desc&sort=activity&site=stackoverflow&tagged=php";
-        curl_setopt($this->ch, CURLOPT_URL, $url);
-        $output = curl_exec($this->ch);
-        return $output;
+      if (!$modified_time) {
+
+        if (is_null($limit)) $limit = 5;
+
+        $url = "https://api.stackexchange.com/2.1/questions?pagesize=".$limit."&order=desc&sort=activity&site=stackoverflow&tagged=php";
+          curl_setopt($this->ch, CURLOPT_URL, $url);
+          $output = curl_exec($this->ch);
+          return $output;
+      } else {
+        //Do nothing
+      }
     }
 
 
@@ -57,7 +62,7 @@ class StackOverflow extends Helpers {
         unset($itemsArr);//release memory
 
       } else {
-         // Do nothing
+      //    // Do nothing
       }  
     }
 

@@ -58,7 +58,7 @@ class Helpers extends Config {
 		$time = $this->timeDifference();
     $time_difference = $time['time_difference_rounded'];
 
-		if ($time_difference >= $GLOBALS['refresh_time'] && $time_difference >= 0.025) {
+		if ($time_difference >= $GLOBALS['refresh_time'] && $time_difference != 0 && $GLOBALS['refresh_time'] != 0) {
 			return false;
 		} else {
 			return true;
@@ -83,6 +83,78 @@ class Helpers extends Config {
     echo $time_elapsed . ' / ' . $refresh_time . ' Hrs';
 
 	}
+
+
+  public function JSONMerge() {
+    $sources = array(
+      'reddit',
+      'redditdesign',
+      'hackernews',
+      'designernews',
+      'vice',
+      'theverge',
+      'eztv',
+      'github',
+      'medium',
+      'stackoverflow',
+      'svbtle',
+      'tpb'
+    );
+
+    $output = array();
+
+    foreach ($sources as $key => $source) {
+      $src = "assets/json/".$source.".json";
+      $source_json  = file_get_contents($src);
+      $source_array = json_decode($source_json, TRUE);
+
+      $output[$key] = $source_array;
+      
+    }
+
+    $res = array_merge_recursive( 
+      $output[0], 
+      $output[1], 
+      $output[2], 
+      $output[3], 
+      $output[4],
+      $output[5],
+      $output[6],
+      $output[7],
+      $output[8],
+      $output[9],
+      $output[10],
+      $output[11]
+    );
+
+
+    $json_arr = array_chunk($res, 5);
+
+   $json_arr['reddit']          = $json_arr[0]; unset($json_arr[0]);
+   $json_arr['redditdesign']    = $json_arr[1]; unset($json_arr[1]);
+   $json_arr['hackernews']      = $json_arr[2]; unset($json_arr[2]);
+   $json_arr['designernews']    = $json_arr[3]; unset($json_arr[3]);
+   $json_arr['vice']            = $json_arr[4]; unset($json_arr[4]);
+   $json_arr['theverge']        = $json_arr[5]; unset($json_arr[5]);
+   $json_arr['eztv']            = $json_arr[6]; unset($json_arr[6]);
+   $json_arr['github']          = $json_arr[7]; unset($json_arr[7]);
+   $json_arr['medium']          = $json_arr[8]; unset($json_arr[8]);
+   $json_arr['stackoverflow']   = $json_arr[9]; unset($json_arr[9]);
+   $json_arr['svbtle']          = $json_arr[10]; unset($json_arr[10]);
+   $json_arr['tpb']             = $json_arr[11]; unset($json_arr[11]);
+
+
+    print_r(json_encode($json_arr));
+
+
+    // $sources_merged = implode(", ", $output);
+    // print_r($sources_merged);
+
+
+  }
+
+
+
 
 }
 ?>

@@ -2,7 +2,7 @@
 
 $GLOBALS = array(
 	//Fetch Refresh Time
-	'refresh_time' 				=> 2.0,
+	'refresh_time' 				=> 3.0,
 	// 'refresh_time' 				=> 0.0,
 	'debug_toggle' 				=> true,
 	//JSON Paths
@@ -22,6 +22,7 @@ $GLOBALS = array(
 	'json_url_tpb'					  => 'assets/json/tpb.json',
 	'json_url_theverge'			  => 'assets/json/theverge.json',
 	'json_url_vice'		    	  => 'assets/json/vice.json',
+	'json_url_svbtle'		    	=> 'assets/json/svbtle.json',
 	//JSON URLs
 );
 

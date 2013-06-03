@@ -10,6 +10,7 @@
   $scraper_designernews = new DesignerNews();
   $scraper_siteinspire  = new SiteInspire();
   $scraper_medium       = new Medium();
+  $scraper_svbtle       = new Svbtle();
   
   $api_hackernews       = new HackerNews();
   $api_redditdev        = new Reddit();
@@ -152,6 +153,9 @@
       $articles =   $scraper_medium->scrapeArticles(5);
                     $scraper_medium->writeJSON( $articles, 5);
 
+      /* SVBTLE */
+      $sv_articles =   $scraper_svbtle->scrapeArticles();
+                       $scraper_svbtle->writeJSON( $sv_articles, 5);
 
     ?>
 

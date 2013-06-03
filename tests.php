@@ -11,7 +11,6 @@
   $scraper_medium       = new Medium();
   
   $api_hackernews       = new HackerNews();
-  $api_redditdev        = new RedditDev();
   $api_dribbble         = new Dribbble();
   $api_stackoverflow    = new StackOverflow();
 
@@ -28,9 +27,9 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/oticons.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/oticons.css" rel="stylesheet">
 
     <style type="text/css">
       body {
@@ -38,7 +37,7 @@
         padding-bottom: 40px;
       }
     </style>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -53,12 +52,12 @@
                                    <link rel="shortcut icon" href="img/favicon.png">
   
   <!-- jQuery -->
-  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="assets/js/jquery-1.9.1.min.js"></script>
   <!-- Vendor JS -->
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/midway.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/midway.min.js"></script>
   <!-- App -->
-  <script src="js/app.js"></script>
+  <script src="assets/js/app.js"></script>
 
  
   </head>
@@ -114,7 +113,6 @@
 
     <select name="json_files" id="json-files">
       <option value="hackernews">hackernews</option>
-      <option value="redditdev">reddit</option>
       <option value="github">github</option>
       <option value="medium">medium</option>
       <option value="designernews">designernews</option>
@@ -124,20 +122,19 @@
       <option value="stackoverflow">stackoverflow</option>
     </select>
     
+    
+
     <br><br>
 
-    <pre id="test">
-      
-    </pre>
+    <pre id="test"></pre>
   
-
     <script>
       jQuery(document).ready(function($) {
 
         $("select#json-files").change(function () {
           var str = "";
           $("select option:selected").each(function () {
-            str += "json/" + $(this).text() + ".json";
+            str += "assets/json/" + $(this).text() + ".json";
           });
 
           //$("pre#test").text(str);
@@ -150,6 +147,19 @@
 
       });
     </script>
+
+
+
+
+
+
+
+    <?php $helpers->JSONMerge(); ?>
+
+  
+
+
+
 
     </div> <!-- /container -->
 
