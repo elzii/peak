@@ -144,7 +144,7 @@ class Helpers extends Config {
    $json_arr['tpb']             = $json_arr[11]; unset($json_arr[11]);
 
 
-    print_r(json_encode($json_arr));
+    //print_r(json_encode($json_arr));
 
 
     // $sources_merged = implode(", ", $output);

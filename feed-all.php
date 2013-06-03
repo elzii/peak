@@ -173,7 +173,7 @@
       Stack Overflow
     </h2>
     <div class="feed-inner">
-      <?php //$api_stackoverflow->readJSON(); ?>
+      <?php $api_stackoverflow->readJSON(); ?>
     </div>
   </div>
   <!-- *-====-* SVBTLE *-====-* -->

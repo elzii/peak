@@ -62,7 +62,7 @@ class StackOverflow extends Helpers {
         unset($itemsArr);//release memory
 
       } else {
-      //    // Do nothing
+        // Do nothing
       }  
     }
 

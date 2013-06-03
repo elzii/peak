@@ -77,7 +77,7 @@ class Github extends Helpers {
   public function writeJSON( $items, $limit ) {
     $modified_time  = $this->modifiedTime();
 
-    print_r($items);
+    // print_r($items);
 
     if (!$modified_time) {  
       
