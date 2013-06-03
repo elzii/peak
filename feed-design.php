@@ -24,9 +24,7 @@
     </h2>
     <div class="feed-inner">
         <?php 
-          /* DRIBBBLE */
-          $shots =  $api_dribbble->getJSON(6);
-                    $api_dribbble->writeJSON( $shots, 6 );  
+           
                     $api_dribbble->readJSON(); 
         ?>
     </div>
@@ -39,9 +37,7 @@
     </h2>
     <div class="feed-inner">
         <?php 
-          /* SITEINSPIRE */
-          $si_thumbs  = $scraper_siteinspire->scrapeSites();
-                        $scraper_siteinspire->writeJSON( $si_thumbs, 6 );
+          
                         $scraper_siteinspire->readJSON(); 
         ?>
     </div>
@@ -54,9 +50,7 @@
     </h2>
     <div class="feed-inner">
         <?php 
-          /* AWWWARDS */
-          $wwws       = $scraper_awwwards->scrapeSites();
-                        $scraper_awwwards->writeJSON( $wwws, 6 );
+          
                         $scraper_awwwards->readJSON(); 
         ?>
     </div>
@@ -75,9 +69,7 @@
       <div class="feed-inner">
 
         <?php 
-          /* DESIGNERNEWS */
-          $dn_stories = $scraper_designernews->scrapeStories(5);
-                        $scraper_designernews->writeJSON( $dn_stories, 5);
+          
                         $scraper_designernews->readJSON();
         ?>
       </div>
@@ -90,9 +82,7 @@
     </h2>
       <div class="feed-inner">
         <?php 
-          /* REDDIT DESIGN */
-          $items_design = $api_redditdesign->getJSON('web_design+design+design_critiques', 5);
-                          $api_redditdesign->writeJSON( $GLOBALS['json_url_redditdesign'], $items_design, 5 );
+          
                           $api_redditdesign->readJSON($GLOBALS['json_url_redditdesign']); ?>
       </div>
   </div>

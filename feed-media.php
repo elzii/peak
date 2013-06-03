@@ -24,8 +24,7 @@
     </h2>
       <div class="feed-inner">
         <?php 
-          $eztv   = $scraper_eztv->scrapeTorrents(); 
-                    $scraper_eztv->writeJSON( $eztv, 5 );
+         
                     $scraper_eztv->readJSON();
         ?>
       </div>
@@ -39,8 +38,7 @@
     </h2>
       <div class="feed-inner">
         <?php 
-          $tpb   =  $scraper_tpb->scrapeTorrents(); 
-                    $scraper_tpb->writeJSON( $tpb, 5 );
+          
                     $scraper_tpb->readJSON();
         ?>
       </div>
@@ -55,8 +53,7 @@
       <div class="feed-inner">
 
         <?php 
-          $gsts   = $scraper_gogogst->scrapeGSTs(); 
-                    $scraper_gogogst->writeJSON( $gsts, 6 );
+          
                     $scraper_gogogst->readJSON();
         ?>
       </div>
@@ -76,8 +73,7 @@
     </h2>
       <div class="feed-inner">
         <?php 
-          $verge_articles =   $xml_theverge->getXML('http://www.theverge.com/rss/index.xml'); 
-                              $xml_theverge->writeJSON( $verge_articles, 5 );
+          
                               $xml_theverge->readJSON(); 
         ?>
       </div>
@@ -91,8 +87,7 @@
     </h2>
       <div class="feed-inner">
         <?php 
-          $vice_articles =  $xml_vice->getXML('http://www.vice.com/rss'); 
-                            $xml_vice->writeJSON( $vice_articles, 5 );
+          
                             $xml_vice->readJSON(); 
         ?>
       </div>
