@@ -6,7 +6,7 @@ require_once 'Helpers.php';
 
 
 // Load all API files in the APIs folder
-define('api_folder', 'APIs');
+define('api_folder', 'apis');
   
 $dir = opendir(api_folder);
 while( ($currentFile = readdir($dir)) !== false ) {
