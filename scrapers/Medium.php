@@ -95,7 +95,7 @@ class Medium extends Helpers {
 
       }
 
-      file_put_contents('json/medium.json',json_encode($jsonArr));
+      file_put_contents($GLOBALS['json_url_medium'],json_encode($jsonArr));
       unset($jsonArr);//release memory
 
     } else {
