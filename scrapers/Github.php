@@ -56,7 +56,7 @@ class Github extends Helpers {
           $nodes = $element->textContent;
           //$nodes = $element->nodeValue;
 
-          $data[$key] = $nodes;
+          $data[$key] = strip_tags($nodes);
 
         }
       }
