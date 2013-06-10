@@ -484,10 +484,81 @@ a.debug-toggle {
 
 
 
-/* TEST PRE
+/* DEBUGGING
 ================================================== */
-pre#test {
-	whitespace: pre-line !important;
+#content.debug {padding-top:55px;}
+
+
+#debug-subnav {
+	position:fixed;z-index:1000;
+	top:40px;
+	height:36px;width:100%;max-height:36px;
+	line-height:36px;
+	background-color: rgb(242,242,242);
+	@include filter-gradient(#f2f2f2, #efefef, vertical);
+	$experimental-support-for-svg: true;
+	@include background-image(linear-gradient(top,  rgba(242,242,242,1) 0%,rgba(239,239,239,1) 100%));
+
+	border-bottom:1px solid #dadada;
+
+	ul {
+		border:none;
+		margin:0;
+		height:100%;max-height:100%;
+
+		li.nav-label {
+			padding:0;
+			font-size:14px;
+			color:#d48749;
+			padding-right:15px;
+			line-height:36px;
+			border-right:1px solid lighten(#dadada, 4);
+			//text-shadow: 0 -1px 0 rgba(255,255,255, 0.25);
+		}
+
+		li a {
+			padding:0;margin:0;
+			line-height:36px;
+			max-height:36px;
+			padding:0 15px;
+			border-right:1px solid lighten(#dadada, 4);
+		}
+
+		li {
+
+		}
+
+	}
+
+}
+
+
+#debug-json_viewer {
+
+	header {
+		height:55px;
+		margin-bottom:25px;
+		border-bottom:1px solid #dedede;
+		clear:both
+	}
+
+	#json_viewer {
+
+		/* <pre> */
+		pre.json_viewer_str {whitespace: pre-line !important;}
+
+		/* prettyPrint table */
+		.json_viewer_pp {
+
+			>div {}
+
+			table {
+				border-collapse:collapse;
+				border-spacing:0px 0px;
+			}
+		}
+		
+	}
 }
 
 

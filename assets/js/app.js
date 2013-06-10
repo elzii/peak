@@ -37,7 +37,7 @@
             // if destination is valid, scroll to
             if(destination && destination.offset()){
                 $('html, body').animate({
-                    scrollTop: $(destination).offset().top
+                    scrollTop: (($(destination).offset().top) - 90)
                 }, 650, 'swing');
             }
         });
@@ -154,6 +154,49 @@
         });
     }
 
+
+    PK.debugTools = function(){
+
+        if ($('#content.debug') <= 0) return;
+
+        //declare vars
+        var json_viewer     = $("#json_viewer"),
+            json_viewer_str = json_viewer.find('.json_viewer_str'),
+            json_viewer_pp  = json_viewer.find('.json_viewer_pp'),
+            str             = "",
+            val             = "";
+
+        $("select#json-files").change(function () {
+
+          $("select option:selected").each(function () {
+            // generate filename from select value
+            val = $(this).val();
+            str = "assets/json/" + $(this).val() + ".json";
+
+
+          });
+
+          //clear div content first
+          $('#json_viewer .json_viewer_pp').empty();
+
+          //load json file contents on change
+          $('.json_viewer_str').load(str, function() {
+              //log json filename & object
+              console.log('Viewing: '+ val + '.json');
+
+              var source    = $(this).text();
+              var data      = !(/[^,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t]/.
+                              test(source.replace(/"(\\.|[^"\\])*"/g, '')))     
+                              && eval('(' + source + ')');
+              var json_tbl  = prettyPrint(data);
+
+              json_viewer_pp.append(json_tbl);
+
+              //document.body.insertBefore( json_tbl, document.body.firstChild );
+          });
+        }).trigger('change');
+    }
+
     /* WINDOW & DOCUMENT LOAD/READYs
     ================================================== */
     $(window).load(function(){
@@ -171,6 +214,7 @@
     $(document).ready(function(){
         
         PK.init();
+        PK.debugTools();
         PK.loadDefaultFeed('feed-all.php');
         PK.feedLoader(PK.elems.fl_all, 'feed-all.php');
         PK.feedLoader(PK.elems.fl_dev, 'feed-dev.php');

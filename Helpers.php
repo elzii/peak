@@ -6,6 +6,8 @@ require_once 'Config.php';
 
 class Helpers extends Config {
 
+  /* TIME DIFFERENCE (FILE MODIFIED ATTR)
+  ================================================== */
 	public function timeDifference(){
 		$path 				            = $GLOBALS['json_url_hackernews'];
     $refresh_time             = $GLOBALS['refresh_time'];
@@ -28,6 +30,8 @@ class Helpers extends Config {
 	}
 
 
+  /* MODIFIED TIME DEBUGGING
+  ================================================== */
   public function modifiedTimeDebugging(){
     
     $time = $this->timeDifference();
@@ -53,6 +57,8 @@ class Helpers extends Config {
     }
   }
 
+  /* MODIFIED TIME
+  ================================================== */
 	public function modifiedTime() {
 
 		$time = $this->timeDifference();
@@ -66,6 +72,8 @@ class Helpers extends Config {
 	}
 
 
+  /* TIME ELAPSED PERCENT
+  ================================================== */
   public function timeElapsedPercent(){
     $time = $this->timeDifference();
 
@@ -73,7 +81,8 @@ class Helpers extends Config {
 
   }
 
-
+  /* TIME TIL REFRESH
+  ================================================== */
 	public function timeTilRefresh() {
 
     $refresh_time     = $GLOBALS['refresh_time'];
@@ -84,7 +93,8 @@ class Helpers extends Config {
 
 	}
 
-
+  /* JSON MERGE
+  ================================================== */
   public function JSONMerge() {
     $sources = array(
       'reddit',
@@ -130,29 +140,59 @@ class Helpers extends Config {
 
     $json_arr = array_chunk($res, 5);
 
-   $json_arr['reddit']          = $json_arr[0]; unset($json_arr[0]);
-   $json_arr['redditdesign']    = $json_arr[1]; unset($json_arr[1]);
-   $json_arr['hackernews']      = $json_arr[2]; unset($json_arr[2]);
-   $json_arr['designernews']    = $json_arr[3]; unset($json_arr[3]);
-   $json_arr['vice']            = $json_arr[4]; unset($json_arr[4]);
-   $json_arr['theverge']        = $json_arr[5]; unset($json_arr[5]);
-   $json_arr['eztv']            = $json_arr[6]; unset($json_arr[6]);
-   $json_arr['github']          = $json_arr[7]; unset($json_arr[7]);
-   $json_arr['medium']          = $json_arr[8]; unset($json_arr[8]);
-   $json_arr['stackoverflow']   = $json_arr[9]; unset($json_arr[9]);
-   $json_arr['svbtle']          = $json_arr[10]; unset($json_arr[10]);
-   $json_arr['tpb']             = $json_arr[11]; unset($json_arr[11]);
+    $json_arr['reddit']          = $json_arr[0]; unset($json_arr[0]);
+    $json_arr['redditdesign']    = $json_arr[1]; unset($json_arr[1]);
+    $json_arr['hackernews']      = $json_arr[2]; unset($json_arr[2]);
+    $json_arr['designernews']    = $json_arr[3]; unset($json_arr[3]);
+    $json_arr['vice']            = $json_arr[4]; unset($json_arr[4]);
+    $json_arr['theverge']        = $json_arr[5]; unset($json_arr[5]);
+    $json_arr['eztv']            = $json_arr[6]; unset($json_arr[6]);
+    $json_arr['github']          = $json_arr[7]; unset($json_arr[7]);
+    $json_arr['medium']          = $json_arr[8]; unset($json_arr[8]);
+    $json_arr['stackoverflow']   = $json_arr[9]; unset($json_arr[9]);
+    $json_arr['svbtle']          = $json_arr[10]; unset($json_arr[10]);
+    $json_arr['tpb']             = $json_arr[11]; unset($json_arr[11]);
 
 
-    //print_r(json_encode($json_arr));
+    // print_r(json_encode($json_arr));
+
+    // return json_encode($json_arr);
+
+    return json_encode($json_arr, JSON_PRETTY_PRINT);
 
 
     // $sources_merged = implode(", ", $output);
     // print_r($sources_merged);
 
-
   }
 
+
+  /* LOAD ALL CLASSES
+  ================================================== */
+  public function loadAllClasses() {
+
+    $classes = array(
+        $scraper_github,
+        $scraper_designernews,
+        $scraper_siteinspire,
+        $scraper_awwwards,
+        $scraper_medium,
+        $scraper_svbtle,
+        $scraper_eztv,
+        $scraper_tpb,
+        $scraper_gogogst,
+        
+        $api_hackernews,
+        $api_redditdev,
+        $api_redditdesign,
+        $api_dribbble,
+        $api_stackoverflow,
+        $xml_theverge,
+        $xml_vice,
+
+        $xml_nettuts,
+      );
+  }
 
 
 

@@ -8,160 +8,104 @@
   $scraper_github       = new Github();
   $scraper_designernews = new DesignerNews();
   $scraper_siteinspire  = new SiteInspire();
+  $scraper_awwwards     = new Awwwards();
   $scraper_medium       = new Medium();
+  $scraper_svbtle       = new Svbtle();
+  $scraper_eztv         = new EZTV();
+  $scraper_tpb          = new TPB();
+  $scraper_gogogst      = new GoGoGST();
   
   $api_hackernews       = new HackerNews();
+  $api_redditdev        = new Reddit();
+  $api_redditdesign     = new Reddit();
   $api_dribbble         = new Dribbble();
   $api_stackoverflow    = new StackOverflow();
+  $xml_theverge         = new TheVerge();
+  $xml_vice             = new Vice();
 
-  $xml_nettuts          = new Envato();          
+  $xml_nettuts          = new Envato();       
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Peak</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<?php include 'header.php'; ?>
 
-    <!-- Le styles -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/oticons.css" rel="stylesheet">
-
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="img/favicon.png">
-  
-  <!-- jQuery -->
-  <script src="assets/js/jquery-1.9.1.min.js"></script>
-  <!-- Vendor JS -->
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/midway.min.js"></script>
-  <!-- App -->
-  <script src="assets/js/app.js"></script>
-
- 
-  </head>
-<body>
+<?php include 'nav.php' ?>
 
 
-    <div id="content" class="container">
+<div id="debug-subnav">
+
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li class="nav-label">Debug Subnav</li>
+      <li><a href="#debug-json_viewer">JSON Viewer</a></li>
+      <li><a href="#debug-json_merge">JSON Merge Array</a></li>
+    </ul>
+  </div>
+
+</div>
 
 
-      <?php /* Time Debugging */ $helpers->modifiedTimeDebugging(); ?>
-        
-      <?php 
+<div id="content" class="debug container">
 
-      /* HACKERNEWS */
-      // $hn_items =   $api_hackernews->getJSON();
-      //               $api_hackernews->writeJSON( $hn_items, 5 );
 
-      // /* REDDIT */
-      // $items =      $api_redditdev->getJSON(5);
-      //               $api_redditdev->writeJSON( $items, 5 );
+  <?php include 'classes-all.php'; ?>
+
+
+
+  <!-- JSON Viewer 
+  ================================================= -->
+  <div id="debug-json_viewer" class="row debug-row flex-row">
+    <div class="row-content">
+      <header class="span12" style="">
+        <h1 class="header-title" style="float:left;margin:0;line-height:1;">View JSON File Contents</h1>
+
+        <!-- value must match json filename without extension -->
+        <select style="margin-bottom:15px;float:right" name="json_files" id="json-files">
+          <option value="hackernews">Hacker News</option>
+          <option value="reddit">Reddit</option>
+          <option value="github">Github</option>
+          <option value="nettuts">Nettuts</option>
+          <option value="stackoverflow">Stack Overflow</option>
+          <option value="svbtle">Svbtle</option>
+          <option value="dribbble">Dribbble</option>
+          <option value="siteinspire">Site Inspire</option>
+          <option value="awwwards">Awwwards</option>
+          <option value="designernews">Designer News</option>
+          <option value="redditdesign">Reddit Design</option>
+          <option value="medium">Medium</option>
+          <option value="eztv">EZTV</option>
+          <option value="tpb">TPB</option>
+          <option value="gogogst">GoGoGST</option>
+          <option value="theverge">The Verge</option>
+          <option value="vice">Vice</option>
+        </select>
+      </header>
       
-      // /* GITHUB */
-      // $repos =      $scraper_github->scrapeTrendingRepos('today');
-      //               $scraper_github->writeJSON( $repos, 5);
+      <div id="json_viewer" class="span12">
+        <pre class="json_viewer_str" style="display:none;"></pre>
+        <div class="json_viewer_pp" style="width:100%"></div>
+      </div>
+    </div>
+  </div>
 
-      // /* NETTUTS */
-      // $nt_articles =  $xml_nettuts->getXML('http://feeds.feedburner.com/nettuts-summary?fmt=xml'); 
-      //                 $xml_nettuts->writeJSON( $nt_articles, 5 );
 
-      // /* STACKOVERFLOW */
-      // $questions =  $api_stackoverflow->getJSON(5); 
-      //               $api_stackoverflow->writeJSON( $questions, 5 );
-
-      // /* MEDIUM */
-      // $articles =   $scraper_medium->scrapeArticles(5);
-      //               $scraper_medium->writeJSON( $articles, 5);
-
-      // /* DRIBBBLE */
-      // $shots =      $api_dribbble->getJSON(6);
-      //               $api_dribbble->writeJSON( $shots, 6 );    
-
-      // /* DESIGNERNEWS */
-      // $dn_stories = $scraper_designernews->scrapeStories(5);
-      //               $scraper_designernews->writeJSON( $dn_stories, 5);
-
-      // /* SITEINSPIRE */
-      // $si_thumbs  = $scraper_siteinspire->scrapeSites();
-      //               $scraper_siteinspire->writeJSON( $si_thumbs, 6 );
-
-    ?>
-
-    <h1>View JSON file contents</h1>
-
-    <select name="json_files" id="json-files">
-      <option value="hackernews">hackernews</option>
-      <option value="github">github</option>
-      <option value="medium">medium</option>
-      <option value="designernews">designernews</option>
-      <option value="dribbble">dribbble</option>
-      <option value="nettuts">nettuts</option>
-      <option value="siteinspire">siteinspire</option>
-      <option value="stackoverflow">stackoverflow</option>
-    </select>
+  <!-- JSON Merge 
+  ================================================= -->
+  <div id="debug-json_merge" -class="row debug-row flex-row">
+    <div class="row-content">
     
+    <h1 class="header-title">JSONMerge()</h1>
     
-
-    <br><br>
-
-    <pre id="test"></pre>
+    <pre>
+      <?php echo $helpers->JSONMerge(); ?>
+    </pre>
   
-    <script>
-      jQuery(document).ready(function($) {
-
-        $("select#json-files").change(function () {
-          var str = "";
-          $("select option:selected").each(function () {
-            str += "assets/json/" + $(this).text() + ".json";
-          });
-
-          //$("pre#test").text(str);
-
-          $("pre#test").load(str, function() {
-              
-          });
-        })
-        .trigger('change');
-
-      });
-    </script>
-
-
-
-
-
-
-
-    <?php $helpers->JSONMerge(); ?>
+    </div>
+  </div>
 
   
 
 
-
-
-    </div> <!-- /container -->
+</div> <!-- /#content.debug -->
 
 
   </body>

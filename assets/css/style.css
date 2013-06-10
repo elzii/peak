@@ -1079,8 +1079,69 @@ a.debug-toggle:hover {
   color: #e3b087 !important;
 }
 
-/* TEST PRE
+/* DEBUGGING
 ================================================== */
-pre#test {
+#content.debug {
+  padding-top: 55px;
+}
+
+#debug-subnav {
+  position: fixed;
+  z-index: 1000;
+  top: 40px;
+  height: 36px;
+  width: 100%;
+  max-height: 36px;
+  line-height: 36px;
+  background-color: #f2f2f2;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFF2F2F2', endColorstr='#FFEFEFEF');
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YyZjJmMiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2VmZWZlZiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f2f2f2), color-stop(100%, #efefef));
+  background-image: -webkit-linear-gradient(top, #f2f2f2 0%, #efefef 100%);
+  background-image: -moz-linear-gradient(top, #f2f2f2 0%, #efefef 100%);
+  background-image: -o-linear-gradient(top, #f2f2f2 0%, #efefef 100%);
+  background-image: linear-gradient(top, #f2f2f2 0%, #efefef 100%);
+  border-bottom: 1px solid #dadada;
+}
+#debug-subnav ul {
+  border: none;
+  margin: 0;
+  height: 100%;
+  max-height: 100%;
+}
+#debug-subnav ul li.nav-label {
+  padding: 0;
+  font-size: 14px;
+  color: #d48749;
+  padding-right: 15px;
+  line-height: 36px;
+  border-right: 1px solid #e4e4e4;
+}
+#debug-subnav ul li a {
+  padding: 0;
+  margin: 0;
+  line-height: 36px;
+  max-height: 36px;
+  padding: 0 15px;
+  border-right: 1px solid #e4e4e4;
+}
+
+#debug-json_viewer header {
+  height: 55px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #dedede;
+  clear: both;
+}
+#debug-json_viewer #json_viewer {
+  /* <pre> */
+  /* prettyPrint table */
+}
+#debug-json_viewer #json_viewer pre.json_viewer_str {
   whitespace: pre-line !important;
+}
+#debug-json_viewer #json_viewer .json_viewer_pp table {
+  border-collapse: collapse;
+  border-spacing: 0px 0px;
 }
