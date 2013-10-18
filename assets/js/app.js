@@ -22,6 +22,7 @@
         PK.elems.fl_dev     = $('#fl-dev');
         PK.elems.fl_design  = $('#fl-design');
         PK.elems.fl_media   = $('#fl-media');
+        PK.elems.fl_ig      = $('#fl-instagram');
         
     }
     
@@ -220,6 +221,7 @@
         PK.feedLoader(PK.elems.fl_dev, 'feed-dev.php');
         PK.feedLoader(PK.elems.fl_design, 'feed-design.php');
         PK.feedLoader(PK.elems.fl_media, 'feed-media.php');
+        PK.feedLoader(PK.elems.fl_ig, 'feed-instagram.php');
 
     });//close document ready
 

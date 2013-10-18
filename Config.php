@@ -2,8 +2,8 @@
 
 $GLOBALS = array(
 	//Fetch Refresh Time
-	'refresh_time' 				=> 3.0,
-	// 'refresh_time' 				=> 0.01,
+	'refresh_time' 				=> 2.0,
+	// 'refresh_time' 				=> 0.000001,
 	'debug_toggle' 				=> true,
 	//JSON Paths
 	'json_url_hackernews'			=> 'assets/json/hackernews.json',
@@ -23,6 +23,7 @@ $GLOBALS = array(
 	'json_url_theverge'			  => 'assets/json/theverge.json',
 	'json_url_vice'		    	  => 'assets/json/vice.json',
 	'json_url_svbtle'		    	=> 'assets/json/svbtle.json',
+	'json_url_instagram'		 	=> 'assets/json/instagram.json',
 	//JSON URLs
 );
 
